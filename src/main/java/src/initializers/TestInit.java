@@ -12,14 +12,14 @@ import src.reportManagement.ExtentManager;
 
 public class TestInit {
 
-    private  ExtentReports extent;
+    private static ExtentReports extent;
     protected ExtentTest pNode;
     ThreadLocal<ExtentTest> parent = new ThreadLocal<>();
 
     private static Logger logger = LoggerFactory.getLogger(TestInit.class);
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuite() {
+    public static void beforeSuite() {
         logger.info("Before Suite Started");
         extent =  ExtentManager.getInstance();
 
