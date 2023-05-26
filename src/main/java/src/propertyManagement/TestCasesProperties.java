@@ -7,18 +7,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ServerCredentialsProperties {
-    private ServerCredentialsProperties() {
+public class TestCasesProperties {
+
+    private TestCasesProperties(){
 
     }
-
-    private static final String PROPERTIES_FILE = "config/ServerCredentials.properties";
+    private static final String PROPERTIES_FILE = "config/TestCases.properties";
     private static Properties properties = new Properties();
-    private static Logger logger = LoggerFactory.getLogger(ServerCredentialsProperties.class);
+    private static Logger logger = LoggerFactory.getLogger(TestCasesProperties.class);
 
     static {
 
-        logger.info("Loading Server Credentials Property");
+        logger.info("Loading Test Cases Property");
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream propertiesFile = classLoader.getResourceAsStream(PROPERTIES_FILE);
 
@@ -37,6 +37,15 @@ public class ServerCredentialsProperties {
     public static String getProperty(String name) {
         return properties.getProperty(name);
     }
+
+    public static String getTestCase(String key) {
+        properties.getProperty(key);
+        String keyValue="";
+        keyValue = key + ": " + properties.getProperty(key);
+        return keyValue;
+    }
+
+    public static void setProperty(String name, String value) {
+        properties.setProperty(name, value);
+    }
 }
-
-

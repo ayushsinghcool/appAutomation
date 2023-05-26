@@ -15,7 +15,6 @@ public class TestInit {
     private static ExtentReports extent;
     protected ExtentTest pNode;
     ThreadLocal<ExtentTest> parent = new ThreadLocal<>();
-
     private static Logger logger = LoggerFactory.getLogger(TestInit.class);
 
     @BeforeSuite(alwaysRun = true)
