@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.Setting;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -38,6 +39,27 @@ public class AppPageInit {
         }
     }
 
+    public boolean waitUntilElementDisappear(String locatorId) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60), Duration.ofMillis(500));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(locatorId)));
+            return false;
+        } catch (java.util.NoSuchElementException e) {
+            return true;
+        }
+    }
+
+    public boolean isElementNotPresent(WebElement element,long timeOutInSeconds ) {
+        try {
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds), Duration.ofMillis(500));
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        } catch (java.util.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public void setText(WebElement element, String text, String elementName) {
         pageInfo = ExtentManager.getTest();
         element.sendKeys(text);
@@ -48,5 +70,10 @@ public class AppPageInit {
        pageInfo = ExtentManager.getTest();
        element.click();
        pageInfo.info("Clicked on : '" + elementName + "'");
+    }
+
+    public void logInfo(String info){
+        pageInfo = ExtentManager.getTest();
+        pageInfo.info(info);
     }
 }

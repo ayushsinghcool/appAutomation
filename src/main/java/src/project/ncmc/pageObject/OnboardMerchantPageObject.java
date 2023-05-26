@@ -1,8 +1,10 @@
 package src.project.ncmc.pageObject;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import src.initializers.AppPageInit;
+import src.utils.CommonUtils;
 
 
 public class OnboardMerchantPageObject extends AppPageInit {
@@ -81,10 +83,12 @@ public class OnboardMerchantPageObject extends AppPageInit {
 
     @AndroidFindBy(id = "ivBack")
     private WebElement backButton;
-
     public OnboardMerchantPageObject clickOnBackButton() {
         clickOnElement(backButton,"Back Button");
         return this;
+    }
+    public boolean isBackButtonDisplayed(){
+         return driver.findElements(By.id("ivBack")).size() > 0 ;
     }
 
     @AndroidFindBy(id = "etActivationCode")
@@ -102,6 +106,45 @@ public class OnboardMerchantPageObject extends AppPageInit {
     public OnboardMerchantPageObject clickOnConfirmButton() {
         clickOnElement(confirmButton,"Confirm Button");
         return this;
+    }
+
+    @AndroidFindBy(id = "btnAction")
+    private WebElement doneBtn;
+    public OnboardMerchantPageObject clickOnDoneButton(){
+        isElementNotPresent(doneBtn);
+        clickOnElement(doneBtn,"Done Button");
+        return this;
+    }
+    public boolean isDoneButtonDisplayed(){
+        CommonUtils.pauseExecution(5);
+        return driver.findElements(By.id("btnAction")).size() > 0;
+    }
+    public void WaitTillLoaderDisplayed(){
+        waitUntilElementDisappear("btn_widget_processin");
+    }
+
+    @AndroidFindBy(id="tvMessage")
+    private WebElement message;
+    public String getMessage(){
+        isElementNotPresent(message,3);
+        logInfo("Fetching Message from Device...");
+        return message.getText();
+    }
+
+    @AndroidFindBy(id="ivClose")
+    private WebElement close;
+    public OnboardMerchantPageObject clickOnCloseButton(){
+        isElementNotPresent(close);
+        clickOnElement(close,"Close Button");
+        return this;
+    }
+
+    @AndroidFindBy(id = "tvActivationError")
+    private WebElement errormsg;
+    public String getErrorMessage(){
+        isElementNotPresent(errormsg,3);
+        logInfo("Fetching Message from Device...");
+        return errormsg.getText();
     }
 
 
