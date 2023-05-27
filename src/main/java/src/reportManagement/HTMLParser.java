@@ -16,10 +16,10 @@ public class HTMLParser {
     private HTMLParser() {
     }
 
-    public static Object[][] generateReporterObject(String htmlReportPath) throws IOException {
+    public static Object[][] generateReporterObject() throws IOException {
         ExtentReader htmlReader = new ExtentReader();
         CTReport ctReport = new CTReport();
-        String fileContent = htmlReader.readFile(htmlReportPath);
+        String fileContent = htmlReader.readFile(CTReport.INPUTHTML_PATH);
         Document doc = Jsoup.parse(fileContent, "", Parser.xmlParser());
         int objSize;
         int counter;
@@ -88,7 +88,7 @@ public class HTMLParser {
                 reporterData[counter][10] = ctReport.getCountry();
                 reporterData[counter][11] = ctReport.getLanguage();
                 reporterData[counter][12] = moduleName;
-                reporterData[counter][13] = ctReport.getTestType();
+                //reporterData[counter][13] = testCaseType;
             }
         }
 
