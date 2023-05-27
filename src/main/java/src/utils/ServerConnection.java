@@ -1,19 +1,7 @@
 package src.utils;
-
-import com.jcraft.jsch.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
-import src.propertyManagement.ServerCredentialsProperties;
-
-import java.io.*;
-import java.util.Properties;
-
-import static java.lang.Integer.parseInt;
-
 public class ServerConnection {
 
-    private static Logger logger = LoggerFactory.getLogger(ServerConnection.class);
+    /*private static Logger logger = LoggerFactory.getLogger(ServerConnection.class);
     private String username;
     private String host;
     private String password;
@@ -42,7 +30,7 @@ public class ServerConnection {
         config.put(STRICT_HOST_KEY_CHECKING, STRICT_HOST_KEY_CHECKING_VALUE);
         try {
             jsch.setKnownHosts(new FileInputStream(FilePaths.SSH_PRIVATE_KEY + "known_hosts"));
-            jsch.addIdentity(FilePaths.SSH_PRIVATE_KEY + "id_rsa");
+            jsch.addIdentity(FilePaths.SSH_PRIVATE_KEY + "id_rsa", FilePaths.SSH_PRIVATE_KEY + "id_rsa.pub");
             session = jsch.getSession(username, host, port);
             session.setConfig(config);
             session.connect();
@@ -135,13 +123,15 @@ public class ServerConnection {
     public static void main(String[] args) {
 
        ServerConnection serverConnection = new ServerConnection();
-        serverConnection.execCmd("cd /var/log/nos-app");
-        serverConnection.execCmd("tail -500 nos.log");
-      /*   serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3090 -a redispass FLUSHALL");
+        //serverConnection.execCmd("tail -500  /var/log/nos-app/nos.log");
+        //serverConnection.executeCommand("kubectl exec -it " + "instaproxy-fccddc79-klm9l -n qa14 /bash" + "tail -500  /var/log/nos-app/nos.log");
+        new FetchLogs().getServerLog(ServerCredentialsProperties.getProperty("server.logPath"));
+       // serverConnection.execCmd("tail -500 nos.log");
+      *//*   serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3090 -a redispass FLUSHALL");
         serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3091 -a redispass FLUSHALL");
         serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3070 -a redispass FLUSHALL");
         serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3071 -a redispass FLUSHALL");
-        serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3072 -a redispass FLUSHALL");*/
-    }
+        serverConnection.executeCommand("redis-cli -h 10.144.25.139 -p 3072 -a redispass FLUSHALL");*//*
+    }*/
 
 }

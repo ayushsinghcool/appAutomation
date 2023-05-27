@@ -8,6 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import src.reportManagement.CTReport;
 import src.reportManagement.ExtentManager;
 
 public class TestInit {
@@ -40,5 +41,7 @@ public class TestInit {
     @AfterSuite
     public void afterSuite(){
         extent.flush();
+        new CTReport();
+        CTReport.generateCTReport(ExtentManager.getExtentReportFileName());
     }
 }
