@@ -1,8 +1,18 @@
 package src.utils;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.jcraft.jsch.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import src.globalConstant.FilePaths;
+import src.propertyManagement.ServerCredentialsProperties;
+import src.reportManagement.ExtentManager;
+
+import java.io.*;
+
 public class FetchLogs {
 
-   /* private Logger logger = LoggerFactory.getLogger(FetchLogs.class);
+    private Logger logger = LoggerFactory.getLogger(FetchLogs.class);
     ServerConnection serverConnection = new ServerConnection();
     ExtentTest pageInfo;
 
@@ -24,11 +34,26 @@ public class FetchLogs {
         }
     }
 
-    *//**
+    /**
      * To print server logs in a log file
      *
      * @return LogFileName
-     *//*
+     */
+
+    public static void connectToVpn() {
+        try {
+            java.util.Properties config = new java.util.Properties();
+            config.put("StrictHostKeyChecking", "no");
+            JSch jsch = new JSch();
+            com.jcraft.jsch.Session session = jsch.getSession("", "", 22);
+            session.setPassword("");
+            session.setConfig(config);
+            session.connect();
+            session.setPortForwardingL(22, "", 1525);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void writeToFile(String fileName ,byte[] tmp, int i){
         try (BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true))){
@@ -38,10 +63,10 @@ public class FetchLogs {
         } catch (IOException | NullPointerException e) {
             logger.info("Error : {}",e.getMessage());
         }
-    }*/
+    }
 
-    /*public String getServerLog(String logFileName){
-        serverConnection.executeCommand("cd..");
+    public String getServerLog(String logFileName){
+        serverConnection.executeCommand("cd ..");
         String ncmcFileName = null;
         try {
             createLogsDirectory();
@@ -52,7 +77,7 @@ public class FetchLogs {
             Channel channel = session.openChannel("exec");
             InputStream inputStream = channel.getInputStream();
             OutputStream outputStream = channel.getOutputStream();
-            ((ChannelExec) channel).setCommand("k exec -it instaproxy-fccddc79-klm9l -n qa14 bash "+NCMC_LOG_GREP_COMMAND + logFileName);
+            ((ChannelExec) channel).setCommand(NCMC_LOG_GREP_COMMAND + logFileName);
             channel.setInputStream(null);
             ((ChannelExec) channel).setErrStream(outputStream);
             channel.connect();
@@ -74,6 +99,6 @@ public class FetchLogs {
             logger.error("Error {}", e.getMessage());
         }
         return ncmcFileName;
-    }*/
+    }
 
 }

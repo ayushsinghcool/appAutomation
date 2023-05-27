@@ -9,7 +9,7 @@ import src.project.ncmc.feature.OnboardMerchantFetaure;
 import src.project.ncmc.pageObject.OnboardMerchantPageObject;
 import src.propertyManagement.TestCasesProperties;
 import src.reportManagement.ExtentManager;
-import src.propertyManagement.MessageReader;
+import src.utils.MessageReader;
 
 
 public class MerchantOnBoardTest extends TestInit {

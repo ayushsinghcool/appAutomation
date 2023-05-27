@@ -88,7 +88,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
         return this;
     }
     public boolean isBackButtonDisplayed(){
-         return driver.findElements(By.id("ivBack")).size()>0 ;
+         return driver.findElements(By.id("ivBack")).size() > 0 ;
     }
 
     @AndroidFindBy(id = "etActivationCode")
@@ -117,9 +117,9 @@ public class OnboardMerchantPageObject extends AppPageInit {
     }
     public boolean isDoneButtonDisplayed(){
         CommonUtils.pauseExecution(5);
-        return driver.findElements(By.id("btnAction")).size()>0;
+        return driver.findElements(By.id("btnAction")).size() > 0;
     }
-    public void waitTillLoaderDisplayed(){
+    public void WaitTillLoaderDisplayed(){
         waitUntilElementDisappear("btn_widget_processin");
     }
 
