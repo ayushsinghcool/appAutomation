@@ -44,87 +44,56 @@ public class ExcelUtil {
     };
 
     private static Logger logger = LoggerFactory.getLogger(ExcelUtil.class);
-
-    /*private static InputStream createExcel(InputStream inputStream, String filename) throws IOException {
-        try {
-            inputStream = new FileInputStream(filename);
-        } catch (FileNotFoundException ex) {
+    private static InputStream createExcel(String filename) throws IOException {
+        File file = new File(filename);
+        if (file.exists()) {
+            return new FileInputStream(file);
+        } else {
+            logger.info("Returning new workbook ");
             XSSFWorkbook workbook = new XSSFWorkbook();
+            logger.info("creating new Sheet");
             workbook.createSheet("new sheet");
 
-            try (FileOutputStream out = new FileOutputStream(new File(filename))) {
+            try (FileOutputStream out = new FileOutputStream(file)) {
                 workbook.write(out);
+            } finally {
+                workbook.close();
             }
 
-            inputStream = new FileInputStream(filename);
+            return new FileInputStream(file);
         }
-
-        return inputStream;
-    }*/
-
-    private static InputStream createExcel(InputStream inputStream, String filename) throws IOException {
-        try{
-            inputStream = new FileInputStream(filename);
-        } catch (FileNotFoundException ex) {
-            // Create Blank workbook
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            // Create file system using specific name
-            FileOutputStream out = new FileOutputStream(filename);
-            workbook.createSheet("new sheet");
-            // write operation workbook using file out object
-            workbook.write(out);
-            out.close();
-
-            inputStream = new FileInputStream(filename);
-            logger.info("File Opened " + filename);
-        }
-        return inputStream;
     }
 
-    public static void writeDataToExcel(String filename, int rowt, int cellt, String textt, int... index) throws IOException {
+
+    public static void writeDataToExcel(String filename, int rowt, int cellt, String textt, int... index) {
         int sheetId = (index.length > 0) ? index[0] : 0;
-        InputStream inpx = null;
-        FileOutputStream fileOut = null;
-        try {
-            inpx = createExcel(inpx, filename);
-            XSSFWorkbook wbx = new XSSFWorkbook(inpx);
+        try (XSSFWorkbook wbx = new XSSFWorkbook(createExcel(filename));
+             FileOutputStream fileOut = new FileOutputStream(filename);) {
+
             XSSFSheet sheet = wbx.getSheetAt(sheetId);
-            XSSFCell cell;
             XSSFRow row = sheet.getRow(rowt);
             if (row == null) {
-                //logger.info("Row is null");
                 sheet.createRow(rowt);
                 row = sheet.getRow(rowt);
-                row.createCell(cellt);
-                cell = row.getCell(cellt);
-            } else {
-                row.createCell(cellt);
-                cell = row.getCell(cellt);
             }
-            cell.setCellValue("" + textt);
-            fileOut = new FileOutputStream(filename);
+
+            XSSFCell cell = row.createCell(cellt);
+            cell.setCellValue(textt);
             wbx.write(fileOut);
         } catch (IOException ex) {
             logger.error("Error occurred in Excel Util....");
             ex.printStackTrace();
-        } finally {
-            if (inpx != null)
-                inpx.close();
-
-            if (fileOut != null)
-                fileOut.close();
         }
     }
 
 
-    private static void writeHeader(String filePaths, String[] headerList) throws IOException {
+    private static void writeHeader(String filePaths, String[] headerList){
         logger.info("Writing file headers {}", filePaths);
         Path path = Paths.get(filePaths);
 
         if (!Files.exists(path)) {
             logger.info("Creating New File: {}", path);
             for (int i = 0; i < headerList.length; i++) {
-                logger.info(headerList[i]);
                 writeDataToExcel(filePaths, 0, i, headerList[i]);
             }
         } else {
@@ -133,7 +102,7 @@ public class ExcelUtil {
 
     }
 
-    public static void writeCTReportFileHeader() throws IOException {
+    public static void writeCTReportFileHeader(){
         writeHeader(FilePaths.CIT_REPORT_OUTPUT_FILE, ctReportExcelHeader);
     }
 

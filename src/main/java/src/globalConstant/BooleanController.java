@@ -1,12 +1,17 @@
 package src.globalConstant;
 
 public class BooleanController {
-    public static boolean isTIDActivationRequired = false;
-    public static boolean isFirstTimeOnboarding = true;
-    public static void setTIDActivationTrue(){
-        isTIDActivationRequired = true;
+    private BooleanController(){
+
     }
-    public static void setFirstTimeOnboardingFalse(){
-        isFirstTimeOnboarding = false;
+
+    private static boolean isFirstTimeOnboarding = true;
+
+    public static boolean getFirstTimeOnboarding() {
+        return isFirstTimeOnboarding;
     }
+    public static void setFirstTimeOnboarding(boolean value) {
+        isFirstTimeOnboarding = value;
+    }
+
 }

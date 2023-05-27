@@ -1,8 +1,7 @@
-package src.utils;
+package src.propertyManagement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.propertyManagement.MobileProperties;
 
 import java.text.MessageFormat;
 import java.util.Locale;
