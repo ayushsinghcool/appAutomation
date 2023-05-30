@@ -26,9 +26,13 @@ public class FilePaths {
     public static final String EXTENT_REPORT_PATH = BASE_PATH +File.separator+ "reports"+File.separator+"htmlReports"+File.separator;
     public static final String APPLICATION_PATH = System.getProperty(USER_DIR) + File.separator + "apps" + File.separator;
 
+    public  static final String LOGS = System.getProperty(USER_DIR) + File.separator+"logs"+File.separator;
+
     public static final  String CT_REPORT = System.getProperty(USER_DIR) + File.separator+"CTReports"+File.separator;
     public static final String CIT_REPORT_OUTPUT_FILE = CT_REPORT + CTReportProperties.getInstance().getProperty("BUILDID") + "_"
             + CTReportProperties.getInstance().getProperty("TestFrameworkName") + "_" +
             CTReportProperties.getInstance().getProperty("ProductInterface")
             + "_" + DateUtil.getCurrentDateTimeExcel() + ".xlsx";
+
+    public  static final String LOGCAT_LOGS = LOGS + "adbLog.txt";
 }

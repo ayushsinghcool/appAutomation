@@ -1,0 +1,157 @@
+05-30 16:23:38.349 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:38.422 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444016708,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"SplashActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444018314},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444018243,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"no_active_sim_in_device","event_category":"pos_edc","event":"custom_event","screenName":"SplashActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444018315},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444018284,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"SplashActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444018315}]
+05-30 16:23:38.430 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:38.431 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:38.431 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:38.431 19671 19751 I okhttp.OkHttpClient: hash: 79c860225dae0ccb26f8bdb5ad16de3cc830d38bad76c77b9f385f32c9ca7345
+05-30 16:23:38.431 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:38.431 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:38.436 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:39.315 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (879ms)
+05-30 16:23:39.316 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:39.316 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:39.316 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:39 GMT
+05-30 16:23:39.316 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:39.318 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:39.318 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:39.325 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:39.812 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:39.814 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444019338,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"ScanActivationActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444019809},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444019796,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"ScanActivationActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444019809}]
+05-30 16:23:39.815 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:39.815 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:39.815 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:39.816 19671 19751 I okhttp.OkHttpClient: hash: 3dde14b4fcc78e06c1626632838163d3c013489699923b52a74de5b07bd3da54
+05-30 16:23:39.816 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:39.816 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:39.817 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:40.052 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (234ms)
+05-30 16:23:40.052 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:40.053 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:40.053 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:39 GMT
+05-30 16:23:40.053 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:40.054 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:40.054 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:40.056 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:42.478 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:42.480 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444020066,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"DebugSettingsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444022476}]
+05-30 16:23:42.481 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:42.481 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:42.482 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:42.482 19671 19751 I okhttp.OkHttpClient: hash: ffdf49f03b7cf8a446c2e20bf14dead34938b1f062bae0165f7bc63c9891d564
+05-30 16:23:42.482 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:42.482 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:42.483 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:42.751 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (268ms)
+05-30 16:23:42.752 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:42.752 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:42.752 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:42 GMT
+05-30 16:23:42.752 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:42.753 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:42.753 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:42.762 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:49.326 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:49.341 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444022773,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"DeviceDetailsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444028933,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"reassign_clicked","event_category":"pos_edc","event":"custom_event","screenName":"DeviceDetailsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444029150,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","pulse_hc1":"DeviceDetailsViewModel","event_action":"iot_disabled","event_category":"pos_edc","event":"custom_event","screenName":"IotCommunicator"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444029179,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"reassign_success","event_label":"YES","event_category":"pos_edc","event":"custom_event","screenName":"DeviceDetailsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444029186,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"reassign_clicked","event_label":"offline_success_reversal_success","event_category":"pos_edc","event":"custom_event","screenName":"DeviceDetailsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444029297,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"DeviceDetailsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444029319}]
+05-30 16:23:49.344 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:49.344 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:49.345 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:49.345 19671 19751 I okhttp.OkHttpClient: hash: 6eec4e4abcbb65d42c4c03c710829067fa8656e7cd9b5ea636adc47f7cf0a943
+05-30 16:23:49.345 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:49.345 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:49.346 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:49.535 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (188ms)
+05-30 16:23:49.535 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:49.535 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:49.536 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:49 GMT
+05-30 16:23:49.536 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:49.537 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:49.537 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:49.543 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:50.867 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:50.870 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444029563,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"ScanActivationActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444030865},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444030854,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"ScanActivationActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444030865}]
+05-30 16:23:50.871 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:50.871 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:50.872 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:50.872 19671 19751 I okhttp.OkHttpClient: hash: ebd8d6359f9a4ea6384dbfd44a0dfdfff8999917972b95cca1890624d4a5a970
+05-30 16:23:50.873 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:50.873 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:50.874 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:51.126 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (251ms)
+05-30 16:23:51.126 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:51.126 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:51.126 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:51 GMT
+05-30 16:23:51.127 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:51.127 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:51.127 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:51.129 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:54.808 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:54.811 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444031146,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"DebugSettingsActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444034806}]
+05-30 16:23:54.811 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:54.811 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:54.811 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:54.811 19671 19751 I okhttp.OkHttpClient: hash: a135d12fb4d465cf331b5f109c48764f37f58105bc7dedbb36ea416609ed5754
+05-30 16:23:54.812 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:54.812 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:54.813 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:55.453 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (639ms)
+05-30 16:23:55.453 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:55.453 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:55.453 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:55 GMT
+05-30 16:23:55.454 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:55.454 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:55.454 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:55.468 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:55.960 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:55.968 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444035942,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"ScanActivationActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444035957}]
+05-30 16:23:55.970 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:23:55.970 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:23:55.970 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:23:55.970 19671 19751 I okhttp.OkHttpClient: hash: 97b8bd4e387e34569b6501be64bc9a0571c7e0d4df3b385bd3c62ac47cc09d39
+05-30 16:23:55.970 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:23:55.971 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:23:55.972 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:23:56.189 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (216ms)
+05-30 16:23:56.189 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:23:56.189 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:23:56.189 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:53:56 GMT
+05-30 16:23:56.189 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:23:56.191 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:23:56.191 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:23:56.194 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}
+05-30 16:23:58.814 19671 19767 I okhttp.OkHttpClient: --> POST https://nos-staging.paytm.com/nos/verifyTerminal
+05-30 16:23:58.814 19671 19767 I okhttp.OkHttpClient: Content-Type: application/json; charset=UTF-8
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: Content-Length: 242
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: CONNECT_TIMEOUT: 60000
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: READ_TIMEOUT: 30000
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: WRITE_TIMEOUT: 10000
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: {"body":{"serialNo":"149015901978438","stan":"000001","tid":"14015808","vendorName":"PAX"},"head":{"clientId":"PAXA9023453","firmwareVersion":"A910_PayDroid_6.0_Leo_V07.1.23_20211224","isP2PEDevice":false,"osVersion":"6.0","version":"2.4.9"}}
+05-30 16:23:58.815 19671 19767 I okhttp.OkHttpClient: --> END POST (242-byte body)
+05-30 16:24:00.276 19671 19767 I okhttp.OkHttpClient: <-- 200 OK https://nos-staging.paytm.com/nos/verifyTerminal (1460ms)
+05-30 16:24:00.276 19671 19767 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:24:00.277 19671 19767 I okhttp.OkHttpClient: Content-Length: 298
+05-30 16:24:00.277 19671 19767 I okhttp.OkHttpClient: x-application-context: application:8080
+05-30 16:24:00.277 19671 19767 I okhttp.OkHttpClient: x-envoy-upstream-service-time: 327
+05-30 16:24:00.277 19671 19767 I okhttp.OkHttpClient: Access-Control-Allow-Methods: GET, POST, OPTIONS
+05-30 16:24:00.278 19671 19767 I okhttp.OkHttpClient: Access-Control-Allow-Headers: DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, sso_token, Cache-Control, Content-Type
+05-30 16:24:00.278 19671 19767 I okhttp.OkHttpClient: Pragma: no-cache
+05-30 16:24:00.278 19671 19767 I okhttp.OkHttpClient: Cache-Control: no-cache, no-store
+05-30 16:24:00.278 19671 19767 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:54:00 GMT
+05-30 16:24:00.278 19671 19767 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:24:00.279 19671 19767 I okhttp.OkHttpClient: {"head":{"responseTimestamp":"2023-05-3016:24:00"},"body":{"resultStatus":"SUCCESS","resultcode":"S","resultMsg":"Terminal already initiated","bankTid":"5P002524","bankMid":"5PT000000000026","mid":"DvFnKU85682298907046","merchantName":"TOUCH WOOD LIMITED","merchantAddress":"H/1","mccCode":"1234"}}
+05-30 16:24:00.279 19671 19767 I okhttp.OkHttpClient: <-- END HTTP (298-byte body)
+05-30 16:24:00.586 19671 19751 I pai_network: makeCall Method: POST URL: https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:24:00.593 19671 19751 D pai_network: RequestBody: [{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444036204,"deviceId":"534e73a601af6fdd","eventType":"openScreen","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event":"openScreen","pulse_hc1":"Hashcode: 150736642","screenName":"ActivateMachineActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444040576},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444038688,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"verifyTerminal_request","event_category":"pos_edc","event":"custom_event","screenName":"ActivationRepository"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444040576},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444040361,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"verifyTerminal_response","event_label":"SUCCESS","event_category":"pos_edc","event":"custom_event","screenName":"ActivateMachineViewModel"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444040576},{"appVersion":"2.4.9","brand":"PAX","carrier":"","clientId":"android-pt-edc","connectionType":"WIFI","customerId":"1490099871","deviceDateTime":1685444040566,"deviceId":"534e73a601af6fdd","eventType":"custom_event","ip":"236.38.100.216","lastAppOpenDate":1685444016522,"latitude":"0.0","longitude":"0.0","messageVersion":1,"model":"A910","osType":"android","osVersion":"6.0","payload":{"vertical_name":"edc","event_action":"activity_user_leave","event_category":"pos_edc","event":"custom_event","screenName":"ActivateMachineActivity"},"priority":0,"sdkVersion":"4.1.17","uploadTime":1685444040576}]
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: --> POST https://sig-staging.paytm.com/v2/api/signals/batch
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: content-type: application/json
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: cache-control: no-cache
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: hash: 9de3549fff8861ac075bdfdfb85046bb858da7dc11a6f1b2f86f0c549fbf9fa6
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: x-requester: android-pt-edc
+05-30 16:24:00.594 19671 19751 I okhttp.OkHttpClient: Content-Encoding: gzip
+05-30 16:24:00.596 19671 19751 I okhttp.OkHttpClient: --> END POST (binary -1-byte body omitted)
+05-30 16:24:00.810 19671 19751 I okhttp.OkHttpClient: <-- 202 Accepted https://sig-staging.paytm.com/v2/api/signals/batch (213ms)
+05-30 16:24:00.810 19671 19751 I okhttp.OkHttpClient: Content-Type: application/json;charset=UTF-8
+05-30 16:24:00.810 19671 19751 I okhttp.OkHttpClient: Content-Length: 49
+05-30 16:24:00.810 19671 19751 I okhttp.OkHttpClient: Date: Tue, 30 May 2023 10:54:00 GMT
+05-30 16:24:00.810 19671 19751 I okhttp.OkHttpClient: Connection: keep-alive
+05-30 16:24:00.812 19671 19751 I okhttp.OkHttpClient: {"status":"SUCCESS","comment":"combined success"}
+05-30 16:24:00.813 19671 19751 I okhttp.OkHttpClient: <-- END HTTP (49-byte body)
+05-30 16:24:00.815 19671 19751 D pai_network: RESPONSE : Response{protocol=http/1.1, code=202, message=Accepted, url=https://sig-staging.paytm.com/v2/api/signals/batch}

@@ -69,7 +69,7 @@ public class MobileDriver {
                     //.setUninstallOtherPackages(MobileProperties.getProperty("app.uninstall"))
                     .setDeviceName(MobileProperties.getProperty("device.name"))
                     .setUdid(MobileProperties.getProperty("device.udid"))
-                    .setApp(app.getAbsolutePath())
+                    //.setApp(app.getAbsolutePath())
                     .setAppPackage(MobileProperties.getProperty("app.package"))
                     .setAppActivity(MobileProperties.getProperty("app.activity"))
                     .setAppWaitActivity("com.paytm.pos.ui.activation.ScanActivationActivity")
