@@ -34,5 +34,13 @@ public class FilePaths {
             CTReportProperties.getInstance().getProperty("ProductInterface")
             + "_" + DateUtil.getCurrentDateTimeExcel() + ".xlsx";
 
-    public  static final String LOGCAT_LOGS = LOGS + "adbLog.txt";
+    private static String logcatLogs;
+
+    public static void setFileName(){
+        logcatLogs =LOGS + "adbLog_"+DateUtil.getTimeStamp()+".txt";
+    }
+    public static String getFileName(){
+        return logcatLogs;
+    }
+
 }

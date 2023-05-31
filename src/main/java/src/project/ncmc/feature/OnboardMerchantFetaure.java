@@ -10,7 +10,6 @@ import src.reportManagement.ExtentManager;
 import src.propertyManagement.MessageReader;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
-
 public class OnboardMerchantFetaure {
     OnboardMerchantPageObject onboardMerchantPageObject = new OnboardMerchantPageObject();
 
@@ -32,11 +31,14 @@ public class OnboardMerchantFetaure {
                     .setTid(tid)
                     .clickOnConfirmButton()
                     .waitTillLoaderDisplayed();
+            CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
+            node.info(CaptureADBLog.fetchReqRes("{\"body\"")[0]);
+            node.info(CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
             //CommonUtils.attachFileAsExtentLog(new FetchLogs().getServerLog(ServerCredentialsProperties.getProperty("server.logPath")), node);
             if (onboardMerchantPageObject.isDoneButtonDisplayed()) {
                 Assertion.verifyEqual(onboardMerchantPageObject.getMessage(), MessageReader.getMessage("VALIDATION_MESSAGE_0001"));
                 onboardMerchantPageObject.clickOnDoneButton();
-                CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
+
             }
         }
         catch (Exception e){

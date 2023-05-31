@@ -11,8 +11,8 @@ import src.initializers.AppPageInit;
 import static java.time.Duration.ofMillis;
 import static java.util.Collections.singletonList;
 
-public class ApplicationInteractionActions {
-    public class W3CActions extends AppPageInit {
+public class ApplicationInteractionActions extends AppPageInit{
+
 
         /**
          * Identify the slider element using any locator strategy.
@@ -39,7 +39,7 @@ public class ApplicationInteractionActions {
         int endX;
         int endY = 0 ;
 
-        public W3CActions(int x, int y, int startX, int startY, int endX, int endY) {
+        public ApplicationInteractionActions(int x, int y, int startX, int startY, int endX, int endY) {
 
             this.x = x;
             this.y = y;
@@ -92,4 +92,4 @@ public class ApplicationInteractionActions {
         }
 
     }
-}
+

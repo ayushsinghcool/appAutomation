@@ -57,9 +57,11 @@ public class OnboardMerchantPageObject extends AppPageInit {
 
     @AndroidFindBy(id = "android:id/button1")
     private WebElement yesBtn;
+    @AndroidFindBy(id = "action_bar_root")
+    private WebElement actionBar;
 
     public OnboardMerchantPageObject clickOnYesBtn() {
-        isElementNotPresent(yesBtn);
+        isElementClickable(actionBar);
         clickOnElement(yesBtn,"Yes button");
         clickOnSetting();
         return this;
@@ -116,17 +118,17 @@ public class OnboardMerchantPageObject extends AppPageInit {
         return this;
     }
     public boolean isDoneButtonDisplayed(){
-        CommonUtils.pauseExecution(5);
         return driver.findElements(By.id("btnAction")).size()>0;
     }
     public void waitTillLoaderDisplayed(){
-        waitUntilElementDisappear("btn_widget_processin");
+        waitUntilElementDisappear("btn_widget_processing");
+        CommonUtils.pauseExecution(5);
     }
 
     @AndroidFindBy(id="tvMessage")
     private WebElement message;
     public String getMessage(){
-        isElementNotPresent(message,3);
+        isElementNotPresent(message);
         logInfo("Fetching Message from Device...");
         return message.getText();
     }

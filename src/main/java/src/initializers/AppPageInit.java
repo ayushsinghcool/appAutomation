@@ -60,6 +60,16 @@ public class AppPageInit {
         }
     }
 
+    public boolean isElementClickable(WebElement element){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60), Duration.ofMillis(500));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public void setText(WebElement element, String text, String elementName) {
         pageInfo = ExtentManager.getTest();
         element.sendKeys(text);
