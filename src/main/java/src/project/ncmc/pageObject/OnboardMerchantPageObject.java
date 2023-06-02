@@ -55,18 +55,6 @@ public class OnboardMerchantPageObject extends AppPageInit {
         return this;
     }
 
-    @AndroidFindBy(id = "android:id/button1")
-    private WebElement yesBtn;
-    @AndroidFindBy(id = "action_bar_root")
-    private WebElement actionBar;
-
-    public OnboardMerchantPageObject clickOnYesBtn() {
-        isElementClickable(actionBar);
-        clickOnElement(yesBtn,"Yes button");
-        clickOnSetting();
-        return this;
-    }
-
     @AndroidFindBy(id = "android:id/button2")
     private WebElement noBtn;
 
@@ -112,9 +100,12 @@ public class OnboardMerchantPageObject extends AppPageInit {
 
     @AndroidFindBy(id = "btnAction")
     private WebElement doneBtn;
+    @AndroidFindBy(id ="ivProfile" )
+    private WebElement menu  ;
     public OnboardMerchantPageObject clickOnDoneButton(){
         isElementNotPresent(doneBtn);
         clickOnElement(doneBtn,"Done Button");
+        isElementNotPresent(menu);
         return this;
     }
     public boolean isDoneButtonDisplayed(){
@@ -144,7 +135,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
     @AndroidFindBy(id = "tvActivationError")
     private WebElement errormsg;
     public String getErrorMessage(){
-        isElementNotPresent(errormsg,3);
+        isElementNotPresent(errormsg);
         logInfo("Fetching Message from Device...");
         return errormsg.getText();
     }

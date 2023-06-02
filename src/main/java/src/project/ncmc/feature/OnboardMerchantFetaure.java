@@ -5,6 +5,7 @@ import com.aventstack.extentreports.Status;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import src.common.Assertion;
 import src.globalConstant.BooleanController;
+import src.project.ncmc.pageObject.CommonPageObject;
 import src.project.ncmc.pageObject.OnboardMerchantPageObject;
 import src.reportManagement.ExtentManager;
 import src.propertyManagement.MessageReader;
@@ -12,7 +13,7 @@ import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
 public class OnboardMerchantFetaure {
     OnboardMerchantPageObject onboardMerchantPageObject = new OnboardMerchantPageObject();
-
+    CommonPageObject commonPageObject = new CommonPageObject();
     public void merchantOnboard(String serialNumber, String eosUrl, String tid) {
         ExtentTest node = ExtentManager.getTest();
         try {
@@ -20,9 +21,9 @@ public class OnboardMerchantFetaure {
                 BooleanController.setFirstTimeOnboarding(false);
                 onboardMerchantPageObject.clickOnSetting()
                         .setSerialNumber(serialNumber)
-                        .clickOnUpdateSerialNumber()
-                        .clickOnYesBtn()
-                        .setEosUrl(eosUrl)
+                        .clickOnUpdateSerialNumber();
+                commonPageObject.clickOnYesBtn();
+                onboardMerchantPageObject.clickOnSetting().setEosUrl(eosUrl)
                         .clickOnUpdateEosUrl()
                         .clickOnUpdateEosUrl()
                         .clickOnBackButton();
@@ -32,12 +33,17 @@ public class OnboardMerchantFetaure {
                     .clickOnConfirmButton()
                     .waitTillLoaderDisplayed();
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
-            node.info(CaptureADBLog.fetchReqRes("{\"body\"")[0]);
-            node.info(CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
-            //CommonUtils.attachFileAsExtentLog(new FetchLogs().getServerLog(ServerCredentialsProperties.getProperty("server.logPath")), node);
+            CommonUtils.createMethodLabel("Verify Terminal API");
+            node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"")[0]);
+            node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
             if (onboardMerchantPageObject.isDoneButtonDisplayed()) {
                 Assertion.verifyEqual(onboardMerchantPageObject.getMessage(), MessageReader.getMessage("VALIDATION_MESSAGE_0001"));
                 onboardMerchantPageObject.clickOnDoneButton();
+                BooleanController.setIsTIDActivated(true);
+                CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
+                CommonUtils.createMethodLabel("Merchant Config API");
+                node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"")[0]);
+                node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
 
             }
         }

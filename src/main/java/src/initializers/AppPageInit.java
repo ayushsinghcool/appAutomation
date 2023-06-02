@@ -49,17 +49,6 @@ public class AppPageInit {
         }
     }
 
-    public boolean isElementNotPresent(WebElement element,long timeOutInSeconds ) {
-        try {
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds), Duration.ofMillis(500));
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch (java.util.NoSuchElementException e) {
-            return false;
-        }
-    }
-
     public boolean isElementClickable(WebElement element){
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60), Duration.ofMillis(500));
