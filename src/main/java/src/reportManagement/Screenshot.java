@@ -26,7 +26,7 @@ public class Screenshot {
     }
 
     public static String captureScreenMobile() {
-        logger.info("\n Taking Screenshot");
+        logger.info("Taking Screenshot");
         String capturePath = "reports/captures/";
         String fileName = "scr" + DateUtil.getCurrentDateAndTimeForReport() + ".png";
         String filePath = capturePath + fileName;

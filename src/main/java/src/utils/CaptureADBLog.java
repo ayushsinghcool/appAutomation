@@ -13,7 +13,7 @@ import src.reportManagement.ExtentManager;
 
 import java.io.*;
 
-public class CaptureADBLog extends AppPageInit {
+public class CaptureADBLog extends AppPageInit{
     protected static LogEntries logcatLog;
     private static Logger logger = LoggerFactory.getLogger(CaptureADBLog.class);
 
@@ -27,9 +27,9 @@ public class CaptureADBLog extends AppPageInit {
 
         try (PrintWriter logFileWriter = new PrintWriter(new FileWriter(path))) {
             for (LogEntry entry : logcatLog) {
-               // if (entry.getMessage().contains("okhttp.OkHttpClient:") || entry.getMessage().contains("pai_network")) {
+                if (entry.getMessage().contains("okhttp.OkHttpClient:") || entry.getMessage().contains("pai_network")) {
                     logFileWriter.println(entry.getMessage());
-              //  }
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class CaptureADBLog extends AppPageInit {
         return pathFileName;
     }
 
-    public static String[] fetchReqRes(String regex) {
+    public static String[] fetchReqRes(String regex,int index) {
         ExtentTest node = ExtentManager.getTest();
         String line;
         String request = null;
@@ -68,8 +68,8 @@ public class CaptureADBLog extends AppPageInit {
             while ((line = br.readLine()) != null) {
                 if (line.contains(regex)) {
                     // Extract request and response JSON data
-                    request = line.split("\"body\":")[1];
-                    response =line.split("\"head\":")[1];
+                    request = line.split("\"body\":")[index];
+                    response =line.split("\"head\":")[index];
                     break;
 
                 }
@@ -82,7 +82,5 @@ public class CaptureADBLog extends AppPageInit {
 
         return new String[]{request, response};
     }
-
-
 
 }

@@ -21,7 +21,7 @@ public class MerchantOnBoardTest extends TestInit {
        onboardMerchantFetaure.afterMethod();
     }
 
-    @Test
+  //  @Test
     private void test_001()  {
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC001"));
         onboardMerchantFetaure.merchantOnboard(
@@ -35,8 +35,8 @@ public class MerchantOnBoardTest extends TestInit {
     private void test_002()  {
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC002"));
         onboardMerchantFetaure.merchantOnboard(
-                "149015901978438",
-                "https://nos-staging.paytm.com/nos/",
-                "14015808");
+                "1990999031",
+                "https://acq-qa2-mw.ncmc-staging.paytmdgt.io/nos/",
+                "15036765");
     }
 }

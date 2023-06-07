@@ -46,7 +46,7 @@ public class CommonUtils {
     }
 
     public static String takeScreenShotOfCurrentView() {
-        logger.info("\n Taking Screenshot");
+        logger.info("Taking Screenshot");
         String capturePath = "reports/captures/";
         String fileName = "scr" + DateUtil.getCurrentDateAndTimeForReport() + ".png";
         String filePath = capturePath + fileName;

@@ -11,7 +11,7 @@ public class OfflineSaleTest extends TestInit {
     OfflineSaleFeature offlineSaleFeature = new OfflineSaleFeature();
 
     @Test
-    private void test001(){
+    private void test_001(){
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC003"));
         offlineSaleFeature.performOfflineSale("1");
     }
