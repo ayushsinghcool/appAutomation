@@ -12,6 +12,7 @@ import src.initializers.AppPageInit;
 import src.reportManagement.ExtentManager;
 
 import java.io.*;
+import java.util.List;
 
 public class CaptureADBLog extends AppPageInit{
     protected static LogEntries logcatLog;
@@ -20,8 +21,10 @@ public class CaptureADBLog extends AppPageInit{
     private static String path;
 
     public static String captureLogcatLog() {
+
         logger.info("Capturing ADB Logs...");
         logcatLog = driver.manage().logs().get("logcat");
+
         FilePaths.setFileName();
         path = createTxtFile(FilePaths.getFileName());
 

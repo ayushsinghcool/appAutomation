@@ -4,6 +4,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import src.initializers.AppPageInit;
+import src.utils.ApplicationInteractionActions;
 import src.utils.CommonUtils;
 
 
@@ -16,6 +17,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
     private WebElement enterActivationCode;
 
     public OnboardMerchantPageObject clickOnActivationCode() {
+        isElementNotPresent(enterActivationCode);
         clickOnElement(enterActivationCode,"TID");
         return this;
     }
@@ -26,7 +28,6 @@ public class OnboardMerchantPageObject extends AppPageInit {
     public OnboardMerchantPageObject clickOnSetting() {
         isElementNotPresent(setting);
         clickOnElement(setting,"Gear Icon");
-        driver.navigate().back();
         return this;
     }
 
@@ -34,8 +35,30 @@ public class OnboardMerchantPageObject extends AppPageInit {
     private WebElement eosUrl;
 
     public OnboardMerchantPageObject setEosUrl(String url) {
+        isElementNotPresent(eosUrl);
         eosUrl.clear();
         setText(eosUrl, url,"EOS URL");
+        return this;
+    }
+
+    @AndroidFindBy(id = "tvNcmcUrl")
+    private WebElement ncmcUrl;
+
+    public OnboardMerchantPageObject setNcmcUrl(String url) {
+        ApplicationInteractionActions.scrollDown();
+        isElementNotPresent(ncmcUrl);
+        ncmcUrl.clear();
+        setText(ncmcUrl, url,"NCMC URL");
+        return this;
+    }
+
+    @AndroidFindBy(id = "btnSubmitNcmcURL")
+    private WebElement updateNcmcUrlBtn;
+
+    public OnboardMerchantPageObject clickOnUpdateNcmcUrl() {
+        clickOnElement(updateNcmcUrlBtn,"Update NCMC Url");
+        //driver.navigate().back();
+        ApplicationInteractionActions.scrollUp();
         return this;
     }
 
@@ -43,6 +66,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
     private WebElement updateSerialNumber;
 
     public OnboardMerchantPageObject setSerialNumber(String serialNumber) {
+        isElementNotPresent(updateSerialNumber);
         setText(updateSerialNumber, serialNumber,"Serial Number");
         return this;
     }
