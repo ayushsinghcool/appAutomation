@@ -20,9 +20,6 @@ public class CommonPageObject extends AppPageInit {
         return  this;
     }
 
-    @AndroidFindBy(id ="tvTotalAmount" )
-    private WebElement totalAmount  ;
-
     WebElement element;
 
     public CommonPageObject setAmount(String amount) {
@@ -77,10 +74,14 @@ public class CommonPageObject extends AppPageInit {
     @AndroidFindBy(id = "tvDeviceDetails")
     private WebElement deviceDetails;
 
+    public CommonPageObject clickOnDeviceDeatils(){
+        clickOnElement(deviceDetails,"Device Details");
+        return this;
+    }
+
     public CommonPageObject scrollUpToDeviceDetails(){
         isElementNotPresent(recent);
         ApplicationInteractionActions.scrollDown();
-        clickOnElement(deviceDetails,"Device Details");
         return this;
     }
 
@@ -109,6 +110,70 @@ public class CommonPageObject extends AppPageInit {
 
     public CommonPageObject waitTillLoaderPresent(){
         waitUntilElementDisappear("progressLayout");
+        return this;
+    }
+
+    @AndroidFindBy(id="btnCollect")
+    private WebElement collect;
+
+    public CommonPageObject clickOnCollectButton(){
+        isElementNotPresent(collect);
+        clickOnElement(collect,"Collect Button");
+        return this;
+    }
+
+    @AndroidFindBy(id="tvTotalAmountTitle")
+    private WebElement amtTitle;
+
+    public String getAmountTitle(){
+        isElementNotPresent(amtTitle);
+        return amtTitle.getText();
+    }
+
+    @AndroidFindBy(id="tvTotalAmount")
+    private WebElement totalAmount;
+
+    public String getTotalAmount(){
+        isElementNotPresent(totalAmount);
+        return totalAmount.getText();
+    }
+
+    @AndroidFindBy(id="tvBottomLeftView")
+    private WebElement scanText;
+
+    public String getScanQrText(){
+        return scanText.getText();
+    }
+
+    @AndroidFindBy(id="alertTitle")
+    private WebElement alertTitle;
+
+    public String getAlertTitle(){
+        isElementNotPresent(alertTitle);
+        isElementNotPresent(alertTitle);
+        return alertTitle.getText();
+    }
+
+    @AndroidFindBy(id="message")
+    private WebElement message;
+
+    public String getAlertMessage(){
+        return message.getText();
+    }
+
+    @AndroidFindBy(id="button2")
+    private WebElement cancel;
+
+    public CommonPageObject clickOnCancelButton(){
+        clickOnElement(cancel,"Cancel Button");
+        return this;
+    }
+
+    @AndroidFindBy(id = "pbSale")
+    private WebElement load;
+
+    public CommonPageObject waitTillLoaderDisplayed(){
+        isElementNotPresent(load);
         return this;
     }
 

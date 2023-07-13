@@ -34,17 +34,20 @@ public class OnboardMerchantFetaure {
                     .waitTillLoaderDisplayed();
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
             CommonUtils.createMethodLabel("Verify Terminal API");
-            node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"")[0]);
-            node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
+            node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"",1)[0]);
+            node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp",1)[1]);
             if (onboardMerchantPageObject.isDoneButtonDisplayed()) {
                 Assertion.verifyEqual(onboardMerchantPageObject.getMessage(), MessageReader.getMessage("VALIDATION_MESSAGE_0001"));
                 onboardMerchantPageObject.clickOnDoneButton();
                 BooleanController.setIsTIDActivated(true);
                 CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
                 CommonUtils.createMethodLabel("Merchant Config API");
-                node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"")[0]);
-                node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp")[1]);
-
+                node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"",1)[0]);
+                node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp",1)[1]);
+            }
+            else{
+                node.fail("Verify Termional Failed");
+                CommonUtils.captureScreenMobile(node,"");
             }
         }
         catch (Exception e){

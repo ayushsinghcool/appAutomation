@@ -66,7 +66,7 @@ public class MobileDriver {
             startAppiumServer();
             logger.info("Setting Capabilities of Android Driver");
             UiAutomator2Options capabilities = new UiAutomator2Options()
-                    //.setUninstallOtherPackages(MobileProperties.getProperty("app.uninstall"))
+                    .setUninstallOtherPackages(MobileProperties.getProperty("app.uninstall"))
                     .setDeviceName(MobileProperties.getProperty("device.name"))
                     .setUdid(MobileProperties.getProperty("device.udid"))
                     //.setApp(app.getAbsolutePath())
