@@ -14,4 +14,10 @@ public class AddMoneyTest extends TestInit {
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC004"));
         addMoneyFeature.performAddMoney("account", "270.01");
     }
+
+    @Test
+    private void test_002() {
+        ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC005"));
+        addMoneyFeature.performAddMoney("cash", "270.01");
+    }
 }

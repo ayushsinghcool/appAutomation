@@ -96,7 +96,7 @@ public class MobileDriver {
                 driver = MobileDriver.getAndroidDriver();
                 logger.info("Info :  ");
 
-                //mobileDriver.removeApp("com.abp.sub");
+                //mobileDriver.removeApp("app.pacakge");
             }
             /*else {
                 mobileDriver = MobileDriver.getIOSDriver();

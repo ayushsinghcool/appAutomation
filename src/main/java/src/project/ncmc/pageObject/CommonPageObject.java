@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import src.initializers.AppPageInit;
 import src.utils.ApplicationInteractionActions;
+import src.utils.CommonUtils;
 
 public class CommonPageObject extends AppPageInit {
     public CommonPageObject(){
