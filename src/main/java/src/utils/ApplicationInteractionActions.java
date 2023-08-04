@@ -22,16 +22,15 @@ public class ApplicationInteractionActions extends AppPageInit {
     static int endX;
     static int endY;
 
-    public static void init() {
+    public static void init(double maxY , double minY) {
         Dimension dim = driver.manage().window().getSize();
         height = dim.getHeight();
         width = dim.getWidth();
         x = width - 10;
         y = 0;
-        startY = (int) (height * 0.95);
-        endY = 50;
+        startY = (int) (height * maxY);
+        endY = (int) minY;
     }
-
 
     public static void slide(WebElement element) {
         WebElement slider = element;
@@ -61,8 +60,8 @@ public class ApplicationInteractionActions extends AppPageInit {
         driver.perform(singletonList(sequence));
     }
 
-    public static void scrollDown() {
-        init();
+    public static void scrollDown(double maxY , double minY) {
+        init(maxY, minY);
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, FINGER);
         Sequence sequence = new Sequence(finger, 1);
         sequence.addAction(finger.createPointerMove(ofMillis(0),
@@ -75,8 +74,8 @@ public class ApplicationInteractionActions extends AppPageInit {
         driver.perform(singletonList(sequence));
     }
 
-    public static void scrollUp() {
-        init();
+    public static void scrollUp(double maxY , double minY) {
+        init(maxY, minY);
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, FINGER);
         Sequence sequence = new Sequence(finger, 1);
         sequence.addAction(finger.createPointerMove(ofMillis(0),

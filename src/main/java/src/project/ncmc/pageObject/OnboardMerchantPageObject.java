@@ -45,7 +45,11 @@ public class OnboardMerchantPageObject extends AppPageInit {
     private WebElement ncmcUrl;
 
     public OnboardMerchantPageObject setNcmcUrl(String url) {
-        ApplicationInteractionActions.scrollDown();
+        ApplicationInteractionActions.scrollDown(0.50,100);
+        ApplicationInteractionActions.scrollDown(0.50,100);
+        ApplicationInteractionActions.scrollDown(0.50,100);
+        ApplicationInteractionActions.scrollDown(0.50,100);
+        //ApplicationInteractionActions.scrollDown(0.95,50);
         isElementNotPresent(ncmcUrl);
         ncmcUrl.clear();
         setText(ncmcUrl, url,"NCMC URL");
@@ -57,8 +61,8 @@ public class OnboardMerchantPageObject extends AppPageInit {
 
     public OnboardMerchantPageObject clickOnUpdateNcmcUrl() {
         clickOnElement(updateNcmcUrlBtn,"Update NCMC Url");
-        //driver.navigate().back();
-        ApplicationInteractionActions.scrollUp();
+        ApplicationInteractionActions.scrollUp(0.95,50);
+        ApplicationInteractionActions.scrollUp(0.95,50);
         return this;
     }
 
@@ -75,6 +79,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
     private WebElement serialNumberBtn;
 
     public OnboardMerchantPageObject clickOnUpdateSerialNumber() {
+        ApplicationInteractionActions.scrollDown(0.50,100);
         clickOnElement(serialNumberBtn,"Serial Number Button");
         return this;
     }

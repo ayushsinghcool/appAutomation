@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import src.initializers.AppPageInit;
 import src.utils.ApplicationInteractionActions;
-import src.utils.CommonUtils;
 
 public class CommonPageObject extends AppPageInit {
     public CommonPageObject(){
@@ -57,12 +56,14 @@ public class CommonPageObject extends AppPageInit {
     private WebElement newPaymentBtn  ;
 
     public boolean waitTillPostTransactionScreenDisplayed(){
-        return driver.findElements(By.id("btnNewPayment")).size()>0;
+        return isElementNotPresent(newPaymentBtn);
     }
     public CommonPageObject clickOnNewPayment(){
         clickOnElement(newPaymentBtn,"New Payment Button");
         return this;
     }
+
+
 
     @AndroidFindBy(id = "tvTimerTop")
     private WebElement timer;
@@ -84,7 +85,7 @@ public class CommonPageObject extends AppPageInit {
 
     public CommonPageObject scrollUpToDeviceDetails(){
         isElementNotPresent(recent);
-        ApplicationInteractionActions.scrollDown();
+        ApplicationInteractionActions.scrollDown(0.95,50);
         return this;
     }
 
@@ -151,9 +152,10 @@ public class CommonPageObject extends AppPageInit {
     @AndroidFindBy(id="alertTitle")
     private WebElement alertTitle;
 
+    public boolean isSecondTapOptionAvailable(){
+        return driver.findElements(By.id("parentPanel")).size()>0;
+    }
     public String getAlertTitle(){
-        isElementNotPresent(alertTitle);
-        isElementNotPresent(alertTitle);
         return alertTitle.getText();
     }
 
@@ -183,6 +185,10 @@ public class CommonPageObject extends AppPageInit {
     public boolean waitTillProcessing(){
         waitUntilElementDisappear("pbSale");
         return waitUntilElementDisappear("pbSale");
+    }
+
+    public boolean isErrorCodeDisplayed(){
+        return driver.findElements(By.id(" tvErrorCode")).size()>0;
     }
 
 }

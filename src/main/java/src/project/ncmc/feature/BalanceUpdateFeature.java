@@ -39,12 +39,12 @@ public class BalanceUpdateFeature {
             Assertion.verifyEqual(balanceUpdatePageObject.getProcessBalanceUpdateText(), MessageReader.getMessage("VALIDATION_MESSAGE_0014"));
             commonPageObject.waitTillProcessing();
 
-            if (!commonPageObject.waitTillPostTransactionScreenDisplayed()) {
+            if(commonPageObject.isSecondTapOptionAvailable()){
                 Assertion.verifyEqual(commonPageObject.getAlertTitle(), MessageReader.getMessage("VALIDATION_MESSAGE_0010"));
-                Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0013"));
-            } else {
-                Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0013"));
             }
+
+            commonPageObject.waitTillPostTransactionScreenDisplayed();
+            Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0013"));
 
             node.info(commonPageObject.getCustomerReceipt());
             node.info(commonPageObject.getMerchantReceipt());
