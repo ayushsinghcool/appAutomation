@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import src.initializers.AppPageInit;
 import src.utils.ApplicationInteractionActions;
+import src.utils.CommonUtils;
 
 public class CommonPageObject extends AppPageInit {
     public CommonPageObject(){
@@ -19,7 +20,6 @@ public class CommonPageObject extends AppPageInit {
         clickOnElement(menu,"Hamburger Menu");
         return  this;
     }
-
     WebElement element;
 
     public CommonPageObject setAmount(String amount) {
@@ -56,6 +56,9 @@ public class CommonPageObject extends AppPageInit {
     @AndroidFindBy(id ="btnNewPayment" )
     private WebElement newPaymentBtn  ;
 
+    public boolean waitTillPostTransactionScreenDisplayed(){
+        return driver.findElements(By.id("btnNewPayment")).size()>0;
+    }
     public CommonPageObject clickOnNewPayment(){
         clickOnElement(newPaymentBtn,"New Payment Button");
         return this;
@@ -175,6 +178,11 @@ public class CommonPageObject extends AppPageInit {
     public CommonPageObject waitTillLoaderDisplayed(){
         isElementNotPresent(load);
         return this;
+    }
+
+    public boolean waitTillProcessing(){
+        waitUntilElementDisappear("pbSale");
+        return waitUntilElementDisappear("pbSale");
     }
 
 }

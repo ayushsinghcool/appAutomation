@@ -3,6 +3,7 @@ package src.initializers;
 import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.Setting;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

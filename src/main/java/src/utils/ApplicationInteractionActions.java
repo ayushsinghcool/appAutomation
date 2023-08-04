@@ -29,7 +29,7 @@ public class ApplicationInteractionActions extends AppPageInit {
         x = width - 10;
         y = 0;
         startY = (int) (height * 0.95);
-        endY = 0;
+        endY = 50;
     }
 
 
@@ -71,6 +71,20 @@ public class ApplicationInteractionActions extends AppPageInit {
         sequence.addAction(new Pause(finger, ofMillis(1000)));
         sequence.addAction(finger.createPointerMove(ofMillis(1000),
                 PointerInput.Origin.viewport(), x, endY));
+        sequence.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(singletonList(sequence));
+    }
+
+    public static void scrollUp() {
+        init();
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, FINGER);
+        Sequence sequence = new Sequence(finger, 1);
+        sequence.addAction(finger.createPointerMove(ofMillis(0),
+                PointerInput.Origin.viewport(), x, endY));
+        sequence.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        sequence.addAction(new Pause(finger, ofMillis(1000)));
+        sequence.addAction(finger.createPointerMove(ofMillis(1000),
+                PointerInput.Origin.viewport(), x, startY));
         sequence.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         driver.perform(singletonList(sequence));
     }

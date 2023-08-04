@@ -3,6 +3,7 @@ package src.project.ncmc.feature;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.xpath.operations.Bool;
 import src.common.Assertion;
 import src.globalConstant.BooleanController;
 import src.project.ncmc.pageObject.CommonPageObject;
@@ -14,7 +15,7 @@ import src.utils.CommonUtils;
 public class OnboardMerchantFetaure {
     OnboardMerchantPageObject onboardMerchantPageObject = new OnboardMerchantPageObject();
     CommonPageObject commonPageObject = new CommonPageObject();
-    public void merchantOnboard(String serialNumber, String eosUrl, String tid) {
+    public void merchantOnboard(String serialNumber, String url, String tid) {
         ExtentTest node = ExtentManager.getTest();
         try {
             if (BooleanController.getFirstTimeOnboarding()){
@@ -23,19 +24,25 @@ public class OnboardMerchantFetaure {
                         .setSerialNumber(serialNumber)
                         .clickOnUpdateSerialNumber();
                 commonPageObject.clickOnYesBtn();
-                onboardMerchantPageObject.clickOnSetting().setEosUrl(eosUrl)
+                onboardMerchantPageObject.clickOnSetting().setEosUrl(url)
                         .clickOnUpdateEosUrl()
                         .clickOnUpdateEosUrl()
+                        .setNcmcUrl(url)
+                        .clickOnUpdateNcmcUrl()
                         .clickOnBackButton();
             }
-            onboardMerchantPageObject.clickOnActivationCode()
-                    .setTid(tid)
-                    .clickOnConfirmButton()
-                    .waitTillLoaderDisplayed();
+            if(!BooleanController.getIsTIDActivated()) {
+                onboardMerchantPageObject.clickOnActivationCode()
+                        .setTid(tid)
+                        .clickOnConfirmButton()
+                        .waitTillLoaderDisplayed();
+            }
+
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(),node);
             CommonUtils.createMethodLabel("Verify Terminal API");
             node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("{\"body\"",1)[0]);
             node.info("Response : " + "{\"head\":"+ CaptureADBLog.fetchReqRes("responseTimestamp",1)[1]);
+
             if (onboardMerchantPageObject.isDoneButtonDisplayed()) {
                 Assertion.verifyEqual(onboardMerchantPageObject.getMessage(), MessageReader.getMessage("VALIDATION_MESSAGE_0001"));
                 onboardMerchantPageObject.clickOnDoneButton();
