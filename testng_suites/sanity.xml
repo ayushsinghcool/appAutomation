@@ -6,7 +6,9 @@
     <test name="NCMC Acquirer API">
         <classes>
             <class name="project.ncmc.MerchantOnBoardTest" />
+            <class name="project.ncmc.ServiceCreationTest" />
             <class name="project.ncmc.AddMoneyTest"></class>
+            <class name="project.ncmc.BalanceUpdateTest"></class>
             <class name="project.ncmc.OfflineSaleTest"></class>
         </classes>
     </test>

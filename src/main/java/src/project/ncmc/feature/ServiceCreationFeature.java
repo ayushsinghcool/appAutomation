@@ -37,16 +37,17 @@ public class ServiceCreationFeature {
                     .waitTillSVLoaderDisplayed();
 
             Assertion.verifyEqual(serviceCreationPageObject.getSVCreationText(), MessageReader.getMessage("VALIDATION_MESSAGE_0015"));
-            commonPageObject.waitTillProcessing();
 
-            if (!serviceCreationPageObject.waitTillSVPostTransactionScreenDisplayed()) {
-                Assertion.verifyEqual(commonPageObject.getAlertTitle(), MessageReader.getMessage("VALIDATION_MESSAGE_0010"));
-                Assertion.verifyEqual(serviceCreationPageObject.getSVCreationText(), MessageReader.getMessage("VALIDATION_MESSAGE_0016"));
-            } else {
+            serviceCreationPageObject.waitTillSVProcessing();
+            serviceCreationPageObject.waitTillSVPostTransactionScreenDisplayed();
+
+            if(!serviceCreationPageObject.isErrorCodeDisplayed()) {
                 Assertion.verifyEqual(serviceCreationPageObject.getSVCreationText(), MessageReader.getMessage("VALIDATION_MESSAGE_0016"));
             }
+            else{
+                Assertion.verifyEqual(serviceCreationPageObject.getSVPostTxnText(), MessageReader.getMessage("VALIDATION_MESSAGE_0016"));
+            }
 
-            node.info(serviceCreationPageObject.getSVPostTxnText());
             node.info("Timer Present : " + serviceCreationPageObject.isSVTimerPresent());
 
             serviceCreationPageObject.clickOnSVNewPayment();

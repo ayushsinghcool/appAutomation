@@ -70,8 +70,13 @@ public class ServiceCreationPageObject extends AppPageInit {
     @AndroidFindBy(id ="btnNewPaymentSvCreation" )
     private WebElement btnNewPaymentSvCreation  ;
     public boolean waitTillSVPostTransactionScreenDisplayed(){
-        return driver.findElements(By.id("btnNewPaymentSvCreation")).size()>0;
+       return isElementNotPresent(btnNewPaymentSvCreation);
     }
+
+    public boolean isErrorCodeDisplayed(){
+        return driver.findElements(By.id(" tvErrorCode")).size()>0;
+    }
+
     public ServiceCreationPageObject clickOnSVNewPayment(){
         clickOnElement(btnNewPaymentSvCreation,"New Payment Button");
         return this;
@@ -83,6 +88,7 @@ public class ServiceCreationPageObject extends AppPageInit {
     public boolean isSVTimerPresent(){
         return timer.isDisplayed();
     }
+
 
     @AndroidFindBy(id = "tvErrorMsg")
     private WebElement tvErrorMsg;

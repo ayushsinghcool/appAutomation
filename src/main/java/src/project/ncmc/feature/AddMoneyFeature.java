@@ -34,7 +34,7 @@ public class AddMoneyFeature {
 
             //First Tap
             node.info(commonPageObject.getAmountTitle() + ": " + commonPageObject.getTotalAmount());
-            node.info(commonPageObject.getScanQrText());
+            //node.info(commonPageObject.getScanQrText());
             Assertion.verifyEqual(commonPageObject.getTotalAmount(), "₹" + amount);
 
             //Second Tap
@@ -44,13 +44,14 @@ public class AddMoneyFeature {
 
             commonPageObject.waitTillProcessing();
 
-            if(!commonPageObject.waitTillPostTransactionScreenDisplayed()){
+
+            if(commonPageObject.isSecondTapOptionAvailable()){
                 Assertion.verifyEqual(commonPageObject.getAlertTitle(), MessageReader.getMessage("VALIDATION_MESSAGE_0010"));
-                Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0012"));
             }
-            else{
-                Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0012"));
-            }
+
+            commonPageObject.waitTillPostTransactionScreenDisplayed();
+
+            Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0012"));
 
             node.info(commonPageObject.getCustomerReceipt());
             node.info(commonPageObject.getMerchantReceipt());
@@ -65,7 +66,7 @@ public class AddMoneyFeature {
 
             CommonUtils.createMethodLabel("Echo and Reversal");
             node.info("Request : " + "{\"body\":{\"echo\":{\"body\":" + CaptureADBLog.fetchReqRes("echo", 2)[0]);
-            node.info("Response : "+ "{\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 1)[0]+
+            node.info("Response : " + "{\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 1)[0] +
                     "\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 2)[0]);
 
         } catch (Exception e) {
