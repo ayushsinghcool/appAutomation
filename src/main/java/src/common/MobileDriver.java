@@ -26,6 +26,8 @@ public class MobileDriver {
     private static AppiumDriverLocalService service;
     private static Logger logger = LoggerFactory.getLogger(MobileDriver.class);
 
+    private static final boolean CONDITION = true;
+
     public static void startAppiumServer() {
         try {
             String nodeJsPath = FilePaths.NODE_JS_PATH;
@@ -86,25 +88,40 @@ public class MobileDriver {
         }
     }
 
-    public static AppiumDriver getMobileAppDriver(){
-        try{
-            if(driver != null){
-                return driver;
+    public static AppiumDriver getMobileAppDriver() {
+        try {
+            if (driver == null) {
+                initializeDriver();
             }
 
-            if (MobileProperties.getProperty("device.platform").equalsIgnoreCase("android")) {
+            return driver;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private static synchronized void initializeDriver() {
+        if (driver == null && MobileProperties.getProperty("device.platform").equalsIgnoreCase("android") ) {
                 driver = MobileDriver.getAndroidDriver();
-                logger.info("Info :  ");
-
-                //mobileDriver.removeApp("app.pacakge");
+                logger.info("Info : ");
             }
             /*else {
                 mobileDriver = MobileDriver.getIOSDriver();
             }*/
         }
-        catch (Exception e){
-            e.printStackTrace();
+
+    public static synchronized void closeDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
         }
-        return driver;
     }
+
+    public static synchronized void futureCondition() {
+        if (CONDITION ) {
+            closeDriver();
+            initializeDriver();
+        }
+    }
+
 }

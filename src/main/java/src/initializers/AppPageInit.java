@@ -25,7 +25,7 @@ public class AppPageInit {
 
     protected AppPageInit() {
         logger.info("Driver {}", driver);
-        driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 100);
+       // driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 100);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

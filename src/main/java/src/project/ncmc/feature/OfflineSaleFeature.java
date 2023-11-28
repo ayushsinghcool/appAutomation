@@ -32,7 +32,7 @@ public class OfflineSaleFeature {
         commonPageObject.setAmount(amount).clickOnCollectButton();
 
         node.info(commonPageObject.getAmountTitle() + ": " + commonPageObject.getTotalAmount());
-        node.info(commonPageObject.getScanQrText());
+       // node.info(commonPageObject.getScanQrText());
         node.info(offlineSalePageObject.getPaymentLinkText());
 
         Assertion.verifyEqual(commonPageObject.getTotalAmount(), "₹" + amount);

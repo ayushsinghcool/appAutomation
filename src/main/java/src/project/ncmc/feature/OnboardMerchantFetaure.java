@@ -24,7 +24,11 @@ public class OnboardMerchantFetaure {
                         .setSerialNumber(serialNumber)
                         .clickOnUpdateSerialNumber();
                 commonPageObject.clickOnYesBtn();
-                onboardMerchantPageObject.clickOnSetting().setEosUrl(url)
+                onboardMerchantPageObject.clickOnSetting().setEosUrl(
+                                serialNumber.equals("149015901978438") ?
+                                         url :
+                                        "https://qa5-edc.paytm.com/eos5/"
+                        )
                         .clickOnUpdateEosUrl()
                         .clickOnUpdateEosUrl()
                         .setNcmcUrl(url)

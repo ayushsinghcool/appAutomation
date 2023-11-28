@@ -6,6 +6,7 @@ import src.project.ncmc.feature.OfflineSaleFeature;
 import src.propertyManagement.TestCasesProperties;
 import src.reportManagement.ExtentManager;
 
+
 public class OfflineSaleTest extends TestInit {
 
     OfflineSaleFeature offlineSaleFeature = new OfflineSaleFeature();

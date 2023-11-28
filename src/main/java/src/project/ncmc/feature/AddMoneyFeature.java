@@ -14,6 +14,7 @@ import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
 
 public class AddMoneyFeature {
+
     CommonPageObject commonPageObject = new CommonPageObject();
     OnboardMerchantFetaure onboardMerchantFetaure = new OnboardMerchantFetaure();
     AddMoneyPageObject addMoneyPageObject = new AddMoneyPageObject();
