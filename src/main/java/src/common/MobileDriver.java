@@ -103,6 +103,7 @@ public class MobileDriver {
     private static synchronized void initializeDriver() {
         if (driver == null && MobileProperties.getProperty("device.platform").equalsIgnoreCase("android") ) {
                 driver = MobileDriver.getAndroidDriver();
+               //mobileDriver.removeApp("app.pacakge");
                 logger.info("Info : ");
             }
             /*else {
