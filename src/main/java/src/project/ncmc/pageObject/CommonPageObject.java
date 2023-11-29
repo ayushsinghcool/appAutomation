@@ -22,6 +22,7 @@ public class CommonPageObject extends AppPageInit {
     WebElement element;
 
     public CommonPageObject setAmount(String amount) {
+        isElementClickable(totalAmount);
         isElementNotPresent(totalAmount);
         for (char amt : amount.toCharArray()) {
             element = amt != '.' ? driver.findElement(By.id("btn" +amt)) :

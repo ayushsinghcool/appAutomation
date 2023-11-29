@@ -6,9 +6,10 @@ import src.project.ncmc.feature.AddMoneyFeature;
 import src.propertyManagement.TestCasesProperties;
 import src.reportManagement.ExtentManager;
 
-public class AddMoneyTest extends TestInit {
-    AddMoneyFeature addMoneyFeature = new AddMoneyFeature();
 
+public class AddMoneyTest extends TestInit {
+
+    AddMoneyFeature addMoneyFeature = new AddMoneyFeature();
     @Test
     private void test_001() {
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC004"));
@@ -20,4 +21,5 @@ public class AddMoneyTest extends TestInit {
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC005"));
         addMoneyFeature.performAddMoney("cash", "270.01");
     }
+
 }
