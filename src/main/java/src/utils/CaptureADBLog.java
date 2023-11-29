@@ -13,6 +13,8 @@ import src.reportManagement.ExtentManager;
 
 import java.io.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CaptureADBLog extends AppPageInit{
     protected static LogEntries logcatLog;
@@ -86,4 +88,42 @@ public class CaptureADBLog extends AppPageInit{
         return new String[]{request, response};
     }
 
-}
+    public static String[] fetchReqRes(String requestRegex, String responseRegex) {
+        ExtentTest node = ExtentManager.getTest();
+        String request = null;
+        String response = null;
+
+        try (FileReader fr = new FileReader(path);
+             BufferedReader br = new BufferedReader(fr)) {
+
+            Pattern requestPattern = Pattern.compile(requestRegex);
+            Pattern responsePattern = Pattern.compile(responseRegex);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                Matcher requestMatcher = requestPattern.matcher(line);
+                Matcher responseMatcher = responsePattern.matcher(line);
+
+                if (requestMatcher.find()) {
+                    request = requestMatcher.group(1); // or group(0) depending on the capturing group in your regex
+                }
+
+                if (responseMatcher.find()) {
+                    response = responseMatcher.group(1); // or group(0) depending on the capturing group in your regex
+                }
+
+                // If both request and response are found, break from the loop
+                if (request != null && response != null) {
+                    break;
+                }
+            }
+
+        } catch (IOException e) {
+            node.fail("Unable to Find Request/Response");
+            node.log(Status.INFO, "StackTrace Result: " + ExceptionUtils.getStackTrace(e));
+        }
+
+        return new String[]{request, response};
+    }
+
+    }

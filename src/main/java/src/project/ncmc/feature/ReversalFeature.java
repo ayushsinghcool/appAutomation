@@ -13,17 +13,17 @@ import src.reportManagement.ExtentManager;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
 
-public class BalanceUpdateFeature {
+public class ReversalFeature {
 
     CommonPageObject commonPageObject = new CommonPageObject();
     OnboardMerchantFetaure onboardMerchantFetaure = new OnboardMerchantFetaure();
     BalanceUpdatePageObject balanceUpdatePageObject = new BalanceUpdatePageObject();
 
 
-    public void performBalnaceUpdate() {
+    public void performReversal() {
         ExtentTest node = ExtentManager.getTest();
         try {
-            if (BooleanController.getFirstTimeOnboarding()) {
+            if (!BooleanController.getFirstTimeOnboarding()) {
                 onboardMerchantFetaure.merchantOnboard(
                         ExecutionProperties.getProperty("nos.dsn"),
                         ExecutionProperties.getProperty("nos.url"),
@@ -42,8 +42,10 @@ public class BalanceUpdateFeature {
                 Assertion.verifyEqual(commonPageObject.getAlertTitle(), MessageReader.getMessage("VALIDATION_MESSAGE_0010"));
             }
 
+            commonPageObject.clickOnCancelButton();
+
             commonPageObject.waitTillPostTransactionScreenDisplayed();
-            Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0013"));
+            Assertion.verifyEqual(commonPageObject.getTxnStatus(), MessageReader.getMessage("VALIDATION_MESSAGE_0017"));
 
             node.info(commonPageObject.getCustomerReceipt());
             node.info(commonPageObject.getMerchantReceipt());
@@ -52,14 +54,15 @@ public class BalanceUpdateFeature {
             commonPageObject.clickOnNewPayment();
 
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(), node);
-            CommonUtils.createMethodLabel("Balance Update API");
-            node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("encryptedTrack2", 1)[0]);
-            node.info("Response : " + "{\"head\":" + CaptureADBLog.fetchReqRes("responseTimestamp", 1)[1]);
-
             CommonUtils.createMethodLabel("Echo and Reversal");
-            node.info("Request : " + "{\"body\":{\"echo\":{\"body\":" + CaptureADBLog.fetchReqRes("echo", 2)[0]);
-            node.info("Response : " + "{\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 1)[0] +
-                    "\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 2)[0]);
+
+            String requestRegex = "";
+            String responseRegex = "";
+
+            String[] reqRes = CaptureADBLog.fetchReqRes(requestRegex, responseRegex);
+
+            node.info("Request : " + reqRes[0]);
+            node.info("Response : " + reqRes[1]);
 
         } catch (Exception e) {
             e.printStackTrace();
