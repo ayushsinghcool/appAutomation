@@ -3,7 +3,6 @@ package src.initializers;
 import com.aventstack.extentreports.ExtentTest;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.Setting;
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -25,7 +24,7 @@ public class AppPageInit {
 
     protected AppPageInit() {
         logger.info("Driver {}", driver);
-       // driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 100);
+        driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 100);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
