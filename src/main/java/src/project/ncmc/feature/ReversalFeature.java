@@ -56,13 +56,8 @@ public class ReversalFeature {
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(), node);
             CommonUtils.createMethodLabel("Echo and Reversal");
 
-            String requestRegex = "";
-            String responseRegex = "";
-
-            String[] reqRes = CaptureADBLog.fetchReqRes(requestRegex, responseRegex);
-
-            node.info("Request : " + reqRes[0]);
-            node.info("Response : " + reqRes[1]);
+            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"reversalErrorMsg\"[^}]+\\}).*"));
+            node.info("Response : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*"));
 
         } catch (Exception e) {
             e.printStackTrace();

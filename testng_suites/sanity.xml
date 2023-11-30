@@ -9,6 +9,7 @@
             <class name="project.ncmc.ServiceCreationTest" />
             <class name="project.ncmc.AddMoneyTest"></class>
             <class name="project.ncmc.BalanceUpdateTest"></class>
+            <class name="project.ncmc.ReversalTest"></class>
             <class name="project.ncmc.OfflineSaleTest"></class>
         </classes>
     </test>
