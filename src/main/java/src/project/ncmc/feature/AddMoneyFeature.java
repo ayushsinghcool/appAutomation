@@ -66,9 +66,9 @@ public class AddMoneyFeature {
             node.info("Response : " + "{\"head\":" + CaptureADBLog.fetchReqRes("responseTimestamp", 1)[1]);
 
             CommonUtils.createMethodLabel("Echo and Reversal");
-            node.info("Request : " + "{\"body\":{\"echo\":{\"body\":" + CaptureADBLog.fetchReqRes("echo", 2)[0]);
-            node.info("Response : " + "{\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 1)[0] +
-                    "\"body\":" + CaptureADBLog.fetchReqRes("isReversalRequired", 2)[0]);
+            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"reversalErrorMsg\"[^}]+\\}).*"));
+            node.info("Response : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*"));
+
 
         } catch (Exception e) {
             e.printStackTrace();

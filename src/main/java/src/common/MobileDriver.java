@@ -77,7 +77,7 @@ public class MobileDriver {
                     .setAppWaitActivity("com.paytm.pos.ui.activation.ScanActivationActivity")
                     .setPlatformVersion(MobileProperties.getProperty("device.version"))
                     .setAutoGrantPermissions(true)
-                    .setNoReset(false)
+                    .setNoReset(true)
                     .setNewCommandTimeout(Duration.ofSeconds(30000))
                     .setAutomationName("UiAutomator2")
                     .clearDeviceLogsOnStart();

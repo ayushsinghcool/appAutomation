@@ -167,7 +167,7 @@ public class CommonPageObject extends AppPageInit {
         return message.getText();
     }
 
-    @AndroidFindBy(id="button2")
+    @AndroidFindBy(xpath="//*[@text='Cancel']")
     private WebElement cancel;
 
     public CommonPageObject clickOnCancelButton(){
