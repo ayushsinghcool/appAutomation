@@ -32,6 +32,8 @@ public class FilePaths {
             CTReportProperties.getInstance().getProperty("ProductInterface")
             + "_" + DateUtil.getCurrentDateTimeExcel() + ".xlsx";
 
+    public static final String INSTAPROXY_LOGS = LOGS +  DateUtil.getTimeStamp() +"-instaProxylog.txt";
+
     private static String logcatLogs;
 
     public static void setFileName(){
@@ -40,5 +42,6 @@ public class FilePaths {
     public static String getFileName(){
         return logcatLogs;
     }
+
 
 }

@@ -25,7 +25,7 @@ public class CaptureADBLog extends AppPageInit {
         logcatLog = driver.manage().logs().get("logcat");
 
         FilePaths.setFileName();
-        path = createTxtFile(FilePaths.getFileName());
+        path = Utils.createTxtFile(FilePaths.getFileName());
 
         try (PrintWriter logFileWriter = new PrintWriter(new FileWriter(path))) {
             for (LogEntry entry : logcatLog) {
@@ -37,25 +37,6 @@ public class CaptureADBLog extends AppPageInit {
             e.printStackTrace();
         }
         return path;
-    }
-
-    public static String createTxtFile(String pathFileName) {
-        try {
-            File file = new File(pathFileName);
-            File directory = new File(FilePaths.LOGS);
-            if (!directory.exists()) {
-                directory.mkdir();
-            }
-            if (file.exists()) {
-                logger.info("File already exists.");
-            } else {
-                boolean fileCreated = file.createNewFile();
-                logger.info("File Created : {}", fileCreated ? pathFileName : fileCreated);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return pathFileName;
     }
 
     public static String[] fetchReqRes(String regex,int index) {
