@@ -12,6 +12,10 @@ import src.propertyManagement.MessageReader;
 import src.reportManagement.ExtentManager;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
+import src.utils.ServerConnection;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ReversalFeature {
 
@@ -23,7 +27,7 @@ public class ReversalFeature {
     public void performReversal() {
         ExtentTest node = ExtentManager.getTest();
         try {
-            if (!BooleanController.getFirstTimeOnboarding()) {
+            if (BooleanController.getFirstTimeOnboarding()) {
                 onboardMerchantFetaure.merchantOnboard(
                         ExecutionProperties.getProperty("nos.dsn"),
                         ExecutionProperties.getProperty("nos.url"),
@@ -56,8 +60,26 @@ public class ReversalFeature {
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(), node);
             CommonUtils.createMethodLabel("Echo and Reversal");
 
+            String response = CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*") ;
+
             node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"reversalErrorMsg\"[^}]+\\}).*"));
-            node.info("Response : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*"));
+            node.info("Response : "+ response);
+
+            Pattern pattern = Pattern.compile("\"orderId\":\"(\\d+)\"");
+            Matcher matcher = pattern.matcher(response);
+
+            if (matcher.find()) {
+                // Extract the orderId from the matched group
+                String orderId = matcher.group(1);
+                CommonUtils.createMethodLabel("Instaproxy Log");
+                CommonUtils.attachFileAsExtentLog(ServerConnection.fetchInstaLog(
+                        ExecutionProperties.getProperty("environment.pod"),
+                        ExecutionProperties.getProperty("environment.insta"),
+                        orderId
+                ),node);
+            } else {
+                node.info("Unable to find orderId");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

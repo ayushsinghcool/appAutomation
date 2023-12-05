@@ -31,15 +31,22 @@ public class FilePaths {
             + CTReportProperties.getInstance().getProperty("TestFrameworkName") + "_" +
             CTReportProperties.getInstance().getProperty("ProductInterface")
             + "_" + DateUtil.getCurrentDateTimeExcel() + ".xlsx";
-
-    public static final String INSTAPROXY_LOGS = LOGS +  DateUtil.getTimeStamp() +"-instaProxylog.txt";
-
     private static String logcatLogs;
 
-    public static void setFileName(){
+    private static String instaProxyLog;
+
+    public static String getInstaProxyLog() {
+        return instaProxyLog;
+    }
+
+    public static void setInstaProxyLog() {
+        FilePaths.instaProxyLog = LOGS +  DateUtil.getTimeStamp() +"-instaProxylog.txt";
+    }
+
+    public static void setAdbLogFileName(){
         logcatLogs =LOGS + "adbLog_"+DateUtil.getTimeStamp()+".txt";
     }
-    public static String getFileName(){
+    public static String getAdbLogFileName(){
         return logcatLogs;
     }
 

@@ -74,10 +74,10 @@ public class MobileDriver {
                     //.setApp(app.getAbsolutePath())
                     .setAppPackage(MobileProperties.getProperty("app.package"))
                     .setAppActivity(MobileProperties.getProperty("app.activity"))
-                    .setAppWaitActivity("com.paytm.pos.ui.activation.ScanActivationActivity")
+                    .setAppWaitActivity(MobileProperties.getProperty("app.waitactivity"))
                     .setPlatformVersion(MobileProperties.getProperty("device.version"))
                     .setAutoGrantPermissions(true)
-                    .setNoReset(true)
+                    .setNoReset(false)
                     .setNewCommandTimeout(Duration.ofSeconds(30000))
                     .setAutomationName("UiAutomator2")
                     .clearDeviceLogsOnStart();

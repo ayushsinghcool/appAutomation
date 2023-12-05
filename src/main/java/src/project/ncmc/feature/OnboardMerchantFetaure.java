@@ -9,6 +9,7 @@ import src.common.MobileDriver;
 import src.globalConstant.BooleanController;
 import src.project.ncmc.pageObject.CommonPageObject;
 import src.project.ncmc.pageObject.OnboardMerchantPageObject;
+import src.propertyManagement.ExecutionProperties;
 import src.propertyManagement.MobileProperties;
 import src.reportManagement.ExtentManager;
 import src.propertyManagement.MessageReader;
@@ -29,7 +30,7 @@ public class OnboardMerchantFetaure {
                 onboardMerchantPageObject.clickOnSetting().setEosUrl(
                                 serialNumber.equals("149015901978438") ?
                                          url :
-                                        MobileProperties.getProperty("eos.url"))
+                                        ExecutionProperties.getProperty("eos.url"))
                         .clickOnUpdateEosUrl()
                         .clickOnUpdateEosUrl()
                         .setNcmcUrl(url)
