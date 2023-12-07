@@ -74,7 +74,7 @@ public class MobileDriver {
                     //.setApp(app.getAbsolutePath())
                     .setAppPackage(MobileProperties.getProperty("app.package"))
                     .setAppActivity(MobileProperties.getProperty("app.activity"))
-                    .setAppWaitActivity(MobileProperties.getProperty("app.waitactivity"))
+                   // .setAppWaitActivity(MobileProperties.getProperty("app.waitactivity"))
                     .setPlatformVersion(MobileProperties.getProperty("device.version"))
                     .setAutoGrantPermissions(true)
                     .setNoReset(false)

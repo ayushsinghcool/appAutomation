@@ -212,7 +212,7 @@ public class ServerConnection {
         ServerConnection.fetchInstaLog(
                 ExecutionProperties.getProperty("environment.pod"),
                 ExecutionProperties.getProperty("environment.insta"),
-                "2023120513162654801097005392"
+                "2023120714300086680414015808"
         );
     }
 }

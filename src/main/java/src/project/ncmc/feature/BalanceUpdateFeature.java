@@ -27,7 +27,7 @@ public class BalanceUpdateFeature {
     public void performBalnaceUpdate() {
         ExtentTest node = ExtentManager.getTest();
         try {
-            if (BooleanController.getFirstTimeOnboarding()) {
+            if (!BooleanController.getFirstTimeOnboarding()) {
                 onboardMerchantFetaure.merchantOnboard(
                         ExecutionProperties.getProperty("nos.dsn"),
                         ExecutionProperties.getProperty("nos.url"),
@@ -64,7 +64,7 @@ public class BalanceUpdateFeature {
             node.info("Response : " + "{\"head\":" + response);
 
             CommonUtils.createMethodLabel("Echo and Reversal");
-            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"reversalErrorMsg\"[^}]+\\}).*"));
+            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"txnType\"[^}]+\\}).*"));
             node.info("Response : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*"));
 
 
