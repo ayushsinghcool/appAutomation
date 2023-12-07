@@ -73,7 +73,7 @@ public class AddMoneyFeature {
             node.info("Response : " + "{\"head\":" + response);
 
             CommonUtils.createMethodLabel("Echo and Reversal");
-            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"reversalErrorMsg\"[^}]+\\}).*"));
+            node.info("Request : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"tc\"[^}]+\\}).*"));
             node.info("Response : "+ CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"retrievalReferenceNumber\"[^}]+\\}).*"));
 
             Pattern pattern = Pattern.compile("\"orderId\":\"(\\d+)\"");

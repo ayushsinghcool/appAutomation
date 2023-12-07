@@ -24,8 +24,9 @@ public class CaptureADBLog extends AppPageInit {
         logger.info("Capturing ADB Logs...");
         logcatLog = driver.manage().logs().get("logcat");
 
-        FilePaths.setAdbLogFileName();
-        path = Utils.createTxtFile(FilePaths.getAdbLogFileName());
+        String adbLogPath = "reports/logs/";
+        String fileName =  "adbLog_"+DateUtil.getTimeStamp()+".txt";
+        path = Utils.createTxtFile(adbLogPath,fileName);
 
         try (PrintWriter logFileWriter = new PrintWriter(new FileWriter(path))) {
             for (LogEntry entry : logcatLog) {
@@ -36,7 +37,7 @@ public class CaptureADBLog extends AppPageInit {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        return "../logs/"+fileName;
     }
 
     public static String[] fetchReqRes(String regex,int index) {

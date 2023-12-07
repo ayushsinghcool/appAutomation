@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class Utils {
     private static Logger logger = LoggerFactory.getLogger(Utils.class);
-    public static String createTxtFile(String pathFileName) {
+    public static String createTxtFile(String dir,String pathFileName) {
         try {
             File file = new File(pathFileName);
-            File directory = new File(FilePaths.LOGS);
+            File directory = new File(dir);
             if (!directory.exists()) {
                 directory.mkdir();
             }
@@ -25,6 +25,6 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return pathFileName;
+        return dir+pathFileName;
     }
 }

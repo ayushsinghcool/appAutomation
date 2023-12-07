@@ -172,8 +172,9 @@ public class ServerConnection {
 
     public static String fetchInstaLog(String environmentPod, String environment , String orderId) {
 
-        FilePaths.setInstaProxyLog();
-        path = Utils.createTxtFile(FilePaths.getInstaProxyLog());
+        String instaproxyPath = "reports/logs/";
+        String fileName =  "instaproxy_"+DateUtil.getTimeStamp()+".txt";
+        path = Utils.createTxtFile(instaproxyPath,fileName);
 
         ServerConnection sshConnection = new ServerConnection(
                 ExecutionProperties.getProperty("stage.host"),
@@ -205,7 +206,7 @@ public class ServerConnection {
         } catch (InterruptedException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return path;
+        return "../logs/"+fileName;
     }
 
     public static void main(String[] args) {
