@@ -3,7 +3,6 @@ package src.utils;
 import com.jcraft.jsch.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
 import src.propertyManagement.ExecutionProperties;
 
 import java.io.*;

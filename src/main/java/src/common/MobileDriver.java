@@ -77,7 +77,7 @@ public class MobileDriver {
                     .setAppWaitActivity(MobileProperties.getProperty("app.waitactivity"))
                     .setPlatformVersion(MobileProperties.getProperty("device.version"))
                     .setAutoGrantPermissions(true)
-                    .setNoReset(true)
+                    .setNoReset(false)
                     .setNewCommandTimeout(Duration.ofSeconds(30000))
                     .setAutomationName("UiAutomator2")
                     .clearDeviceLogsOnStart();

@@ -7,7 +7,6 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
 import src.initializers.AppPageInit;
 import src.reportManagement.ExtentManager;
 
