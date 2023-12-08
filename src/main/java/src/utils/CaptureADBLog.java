@@ -7,7 +7,6 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
 import src.initializers.AppPageInit;
 import src.reportManagement.ExtentManager;
 
@@ -24,8 +23,9 @@ public class CaptureADBLog extends AppPageInit {
         logger.info("Capturing ADB Logs...");
         logcatLog = driver.manage().logs().get("logcat");
 
-        FilePaths.setFileName();
-        path = Utils.createTxtFile(FilePaths.getFileName());
+        String adbLogPath = "reports/logs/";
+        String fileName =  "adbLog_"+DateUtil.getTimeStamp()+".txt";
+        path = Utils.createTxtFile(adbLogPath,fileName);
 
         try (PrintWriter logFileWriter = new PrintWriter(new FileWriter(path))) {
             for (LogEntry entry : logcatLog) {
@@ -36,7 +36,7 @@ public class CaptureADBLog extends AppPageInit {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        return "../logs/"+fileName;
     }
 
     public static String[] fetchReqRes(String regex,int index) {

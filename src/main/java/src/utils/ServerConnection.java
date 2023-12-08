@@ -3,7 +3,6 @@ package src.utils;
 import com.jcraft.jsch.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
 import src.propertyManagement.ExecutionProperties;
 
 import java.io.*;
@@ -18,6 +17,8 @@ public class ServerConnection {
     private String username;
     private String password;
     private Session session;
+
+    private static String path;
 
     public ServerConnection(String host, int port, String username, String password) {
         this.host = host;
@@ -168,7 +169,11 @@ public class ServerConnection {
 
     }
 
-    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+    public static String fetchInstaLog(String environmentPod, String environment , String orderId) {
+
+        String instaproxyPath = "reports/logs/";
+        String fileName =  "instaproxy_"+DateUtil.getTimeStamp()+".txt";
+        path = Utils.createTxtFile(instaproxyPath,fileName);
 
         ServerConnection sshConnection = new ServerConnection(
                 ExecutionProperties.getProperty("stage.host"),
@@ -177,25 +182,37 @@ public class ServerConnection {
                 ExecutionProperties.getProperty("stage.password"));
         sshConnection.connect();
 
-        String logsStageResponse = sshConnection.executeCommand("stagepods");
-        List<String> instaproxyPods = sshConnection.getPodsByPrefix("instaproxy-", logsStageResponse);
+        String logsStageResponse = null;
+        try {
+            logsStageResponse = sshConnection.executeCommand(environmentPod);
+            List<String> instaproxyPods = sshConnection.getPodsByPrefix("instaproxy-", logsStageResponse);
 
-        String instaproxyPod = instaproxyPods.get(0);
+            String instaproxyPod = instaproxyPods.get(0);
 
-        String grepCommand = ExecutionProperties.getProperty("insta.grep");
-        String logFile = ExecutionProperties.getProperty("insta.file");
+            String grepCommand = ExecutionProperties.getProperty("insta.grep");
+            String logFile = ExecutionProperties.getProperty("insta.file");
 
-        List<String> commands = List.of(
-                ExecutionProperties.getProperty("insta.path"),
-                ExecutionProperties.getProperty("insta.file.list"),
-                 grepCommand + " '2023120414365830320814015808' " + logFile
+            List<String> commands = List.of(
+                    ExecutionProperties.getProperty("insta.path"),
+                    ExecutionProperties.getProperty("insta.file.list"),
+                    grepCommand + " '" + orderId + "' " +  logFile
 
+            );
+
+            sshConnection.executeCommandsInSequence(instaproxyPod, environment, commands, path);
+
+            sshConnection.disconnect();
+        } catch (InterruptedException | FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return "../logs/"+fileName;
+    }
+
+    public static void main(String[] args) {
+        ServerConnection.fetchInstaLog(
+                ExecutionProperties.getProperty("environment.pod"),
+                ExecutionProperties.getProperty("environment.insta"),
+                "2023120714300086680414015808"
         );
-
-        String logFilePath = Utils.createTxtFile(FilePaths.INSTAPROXY_LOGS);
-
-        sshConnection.executeCommandsInSequence(instaproxyPod,"stage", commands,logFilePath);
-
-        sshConnection.disconnect();
     }
 }

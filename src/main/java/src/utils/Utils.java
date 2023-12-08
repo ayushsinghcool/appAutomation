@@ -2,17 +2,16 @@ package src.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.globalConstant.FilePaths;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Utils {
     private static Logger logger = LoggerFactory.getLogger(Utils.class);
-    public static String createTxtFile(String pathFileName) {
+    public static String createTxtFile(String dir,String fileName) {
         try {
-            File file = new File(pathFileName);
-            File directory = new File(FilePaths.LOGS);
+            File file = new File(dir+fileName);
+            File directory = new File(dir);
             if (!directory.exists()) {
                 directory.mkdir();
             }
@@ -20,11 +19,11 @@ public class Utils {
                 logger.info("File already exists.");
             } else {
                 boolean fileCreated = file.createNewFile();
-                logger.info("File Created : {}", fileCreated ? pathFileName : fileCreated);
+                logger.info("File Created : {}", fileCreated ? fileName : fileCreated);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return pathFileName;
+        return dir+fileName;
     }
 }

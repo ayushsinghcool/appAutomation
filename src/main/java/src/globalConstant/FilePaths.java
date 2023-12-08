@@ -31,17 +31,4 @@ public class FilePaths {
             + CTReportProperties.getInstance().getProperty("TestFrameworkName") + "_" +
             CTReportProperties.getInstance().getProperty("ProductInterface")
             + "_" + DateUtil.getCurrentDateTimeExcel() + ".xlsx";
-
-    public static final String INSTAPROXY_LOGS = LOGS +  DateUtil.getTimeStamp() +"-instaProxylog.txt";
-
-    private static String logcatLogs;
-
-    public static void setFileName(){
-        logcatLogs =LOGS + "adbLog_"+DateUtil.getTimeStamp()+".txt";
-    }
-    public static String getFileName(){
-        return logcatLogs;
-    }
-
-
 }
