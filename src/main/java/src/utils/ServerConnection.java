@@ -3,7 +3,7 @@ package src.utils;
 import com.jcraft.jsch.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import src.propertyManagement.ExecutionProperties;
+import src.propertyManagement.ServerCredentialsProperties;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -170,16 +170,15 @@ public class ServerConnection {
     }
 
     public static String fetchInstaLog(String environmentPod, String environment , String orderId) {
-
         String instaproxyPath = "reports/logs/";
-        String fileName =  "instaproxy_"+DateUtil.getTimeStamp()+".txt";
+        String fileName =  "instaproxy_"+DateUtil.getTimeStamp()+".log";
         path = Utils.createTxtFile(instaproxyPath,fileName);
 
         ServerConnection sshConnection = new ServerConnection(
-                ExecutionProperties.getProperty("stage.host"),
-                Integer.parseInt(ExecutionProperties.getProperty("stage.port")),
-                ExecutionProperties.getProperty("stage.username"),
-                ExecutionProperties.getProperty("stage.password"));
+                ServerCredentialsProperties.getProperty("stage.host"),
+                Integer.parseInt(ServerCredentialsProperties.getProperty("stage.port")),
+                ServerCredentialsProperties.getProperty("stage.username"),
+                ServerCredentialsProperties.getProperty("stage.password"));
         sshConnection.connect();
 
         String logsStageResponse = null;
@@ -189,13 +188,15 @@ public class ServerConnection {
 
             String instaproxyPod = instaproxyPods.get(0);
 
-            String grepCommand = ExecutionProperties.getProperty("insta.grep");
-            String logFile = ExecutionProperties.getProperty("insta.file");
+            String grepCommand = ServerCredentialsProperties.getProperty("insta.grep");
+            String logFile = ServerCredentialsProperties.getProperty("insta.file");
+            String zcat = ServerCredentialsProperties.getProperty("insta.zcat");
 
             List<String> commands = List.of(
-                    ExecutionProperties.getProperty("insta.path"),
-                    ExecutionProperties.getProperty("insta.file.list"),
+                    ServerCredentialsProperties.getProperty("insta.path"),
+                    //ServerCredentialsProperties.getProperty("insta.file.list"),
                     grepCommand + " '" + orderId + "' " +  logFile
+                   // zcat + " " + logFile + " | grep -A20 '" + orderId + "'"
 
             );
 
@@ -206,13 +207,5 @@ public class ServerConnection {
             throw new RuntimeException(e);
         }
         return "../logs/"+fileName;
-    }
-
-    public static void main(String[] args) {
-        ServerConnection.fetchInstaLog(
-                ExecutionProperties.getProperty("environment.pod"),
-                ExecutionProperties.getProperty("environment.insta"),
-                "2023120714300086680414015808"
-        );
     }
 }

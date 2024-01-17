@@ -9,6 +9,7 @@ import src.project.ncmc.pageObject.BalanceUpdatePageObject;
 import src.project.ncmc.pageObject.CommonPageObject;
 import src.propertyManagement.ExecutionProperties;
 import src.propertyManagement.MessageReader;
+import src.propertyManagement.ServerCredentialsProperties;
 import src.reportManagement.ExtentManager;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
@@ -73,8 +74,8 @@ public class ReversalFeature {
                 String orderId = matcher.group(1);
                 CommonUtils.createMethodLabel("Instaproxy Log");
                 CommonUtils.attachFileAsExtentLog(ServerConnection.fetchInstaLog(
-                        ExecutionProperties.getProperty("environment.pod"),
-                        ExecutionProperties.getProperty("environment.insta"),
+                        ServerCredentialsProperties.getProperty("environment.pod"),
+                        ServerCredentialsProperties.getProperty("environment.insta"),
                         orderId
                 ),node);
             } else {

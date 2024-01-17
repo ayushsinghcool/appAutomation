@@ -9,6 +9,7 @@ import src.project.ncmc.pageObject.CommonPageObject;
 import src.project.ncmc.pageObject.ServiceCreationPageObject;
 import src.propertyManagement.ExecutionProperties;
 import src.propertyManagement.MessageReader;
+import src.propertyManagement.ServerCredentialsProperties;
 import src.reportManagement.ExtentManager;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
@@ -58,11 +59,11 @@ public class ServiceCreationFeature {
 
             CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(), node);
 
-            String response = CaptureADBLog.fetchReqRes("responseTimestamp", 1)[1] ;
+            String response = CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"bankResultCode\"[^}]+\\}).*");
 
             CommonUtils.createMethodLabel("Create Service API");
-            node.info("Request : " + "{\"body\":" + CaptureADBLog.fetchReqRes("encryptedTrack2", 1)[0]);
-            node.info("Response : " + "{\"head\":" + response);
+            node.info("Request : " + CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"expiryDate\"[^}]+\\}).*"));
+            node.info("Response : "  + response);
 
             Pattern pattern = Pattern.compile("\"orderId\":\"(\\d+)\"");
             Matcher matcher = pattern.matcher(response);
@@ -72,8 +73,8 @@ public class ServiceCreationFeature {
                 String orderId = matcher.group(1);
                 CommonUtils.createMethodLabel("Instaproxy Log");
                 CommonUtils.attachFileAsExtentLog(ServerConnection.fetchInstaLog(
-                        ExecutionProperties.getProperty("environment.pod"),
-                        ExecutionProperties.getProperty("environment.insta"),
+                        ServerCredentialsProperties.getProperty("environment.pod"),
+                        ServerCredentialsProperties.getProperty("environment.insta"),
                         orderId
                 ),node);
             } else {

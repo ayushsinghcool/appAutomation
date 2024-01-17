@@ -28,7 +28,7 @@ public class OnboardMerchantFetaure {
                         .clickOnUpdateSerialNumber();
                 commonPageObject.clickOnYesBtn();
                 onboardMerchantPageObject.clickOnSetting().setEosUrl(
-                                serialNumber.equals("149015901978438") ?
+                                serialNumber.equals("149015901978439") ?
                                          url :
                                         ExecutionProperties.getProperty("eos.url"))
                         .clickOnUpdateEosUrl()

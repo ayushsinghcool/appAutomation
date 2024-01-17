@@ -24,7 +24,7 @@ public class CaptureADBLog extends AppPageInit {
         logcatLog = driver.manage().logs().get("logcat");
 
         String adbLogPath = "reports/logs/";
-        String fileName =  "adbLog_"+DateUtil.getTimeStamp()+".txt";
+        String fileName =  "adbLog_"+DateUtil.getTimeStamp()+".log";
         path = Utils.createTxtFile(adbLogPath,fileName);
 
         try (PrintWriter logFileWriter = new PrintWriter(new FileWriter(path))) {

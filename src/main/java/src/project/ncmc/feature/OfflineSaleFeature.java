@@ -9,6 +9,7 @@ import src.project.ncmc.pageObject.CommonPageObject;
 import src.project.ncmc.pageObject.OfflineSalePageObject;
 import src.propertyManagement.ExecutionProperties;
 import src.propertyManagement.MessageReader;
+import src.propertyManagement.ServerCredentialsProperties;
 import src.reportManagement.ExtentManager;
 import src.utils.CaptureADBLog;
 import src.utils.CommonUtils;
@@ -50,7 +51,7 @@ public class OfflineSaleFeature {
 
         CommonUtils.attachFileAsExtentLog(CaptureADBLog.captureLogcatLog(), node);
 
-        String response = CaptureADBLog.fetchReqRes("responseTimestamp",1)[1];
+        String response = CaptureADBLog.fetchLog(".*I okhttp.OkHttpClient: (.+\"offlineSaleBatchResponseList\"[^}]+\\}).*");
 
         CommonUtils.createMethodLabel("Offline Sale API");
         node.info("Request : " + "{\"offlineSaleRequestBody\":" + CaptureADBLog.fetchReqRes("{\"" + "offlineSaleRequestBody" + "\"",1)[0]);
@@ -64,8 +65,8 @@ public class OfflineSaleFeature {
                 String orderId = matcher.group(1);
                 CommonUtils.createMethodLabel("Instaproxy Log");
                 CommonUtils.attachFileAsExtentLog(ServerConnection.fetchInstaLog(
-                        ExecutionProperties.getProperty("environment.pod"),
-                        ExecutionProperties.getProperty("environment.insta"),
+                        ServerCredentialsProperties.getProperty("environment.pod"),
+                        ServerCredentialsProperties.getProperty("environment.insta"),
                         orderId
                 ),node);
             } else {
