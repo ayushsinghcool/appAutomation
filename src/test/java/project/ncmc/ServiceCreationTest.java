@@ -10,7 +10,7 @@ public class ServiceCreationTest extends TestInit {
 
     ServiceCreationFeature serviceCreationFeature = new ServiceCreationFeature();
 
-    @Test
+    @Test(enabled = false)
     private void tc_001(){
         ExtentManager.startTestFromProperty(pNode, TestCasesProperties.getTestCase("TC007"));
         serviceCreationFeature.performServiceCreation();

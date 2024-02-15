@@ -3,14 +3,11 @@ package src.project.ncmc.feature;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.xpath.operations.Bool;
 import src.common.Assertion;
-import src.common.MobileDriver;
 import src.globalConstant.BooleanController;
 import src.project.ncmc.pageObject.CommonPageObject;
 import src.project.ncmc.pageObject.OnboardMerchantPageObject;
 import src.propertyManagement.ExecutionProperties;
-import src.propertyManagement.MobileProperties;
 import src.reportManagement.ExtentManager;
 import src.propertyManagement.MessageReader;
 import src.utils.CaptureADBLog;
@@ -28,7 +25,7 @@ public class OnboardMerchantFetaure {
                         .clickOnUpdateSerialNumber();
                 commonPageObject.clickOnYesBtn();
                 onboardMerchantPageObject.clickOnSetting().setEosUrl(
-                                serialNumber.equals("149015901978439") ?
+                                serialNumber.equals("149015901978438") ?
                                          url :
                                         ExecutionProperties.getProperty("eos.url"))
                         .clickOnUpdateEosUrl()

@@ -138,6 +138,7 @@ public class OnboardMerchantPageObject extends AppPageInit {
         return this;
     }
     public boolean isDoneButtonDisplayed(){
+        isElementNotPresent(doneBtn);
         return driver.findElements(By.id("btnAction")).size()>0;
     }
     public void waitTillLoaderDisplayed(){

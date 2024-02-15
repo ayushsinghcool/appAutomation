@@ -47,9 +47,9 @@ public class CTReport {
 
     public static void main(String[] args) {
 
-//        String path = "/Users/ayushkumarsingh/Desktop/paytm_ncmc_app_automation/reports/htmlReports/NCMC App26-05-2023-04-11-38.html";
-//        CTReport ctReport = new CTReport();
-//        ctReport.generateCTReport(path);
+        String path = "/Users/ayushkumarsingh/Downloads/p3/paytm_ncmc_app_automation/reports/htmlReports/NCMC App06-02-2024-05-22-00.html";
+        CTReport ctReport = new CTReport();
+        ctReport.generateCTReport(path);
     }
     public String getLeadName() {
         return this.leadName;

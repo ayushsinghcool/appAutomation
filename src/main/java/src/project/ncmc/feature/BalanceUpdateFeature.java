@@ -77,7 +77,6 @@ public class BalanceUpdateFeature {
                 String orderId = matcher.group(1);
                 CommonUtils.createMethodLabel("Instaproxy Log");
                 CommonUtils.attachFileAsExtentLog(ServerConnection.fetchInstaLog(
-                        ServerCredentialsProperties.getProperty("environment.pod"),
                         ServerCredentialsProperties.getProperty("environment.insta"),
                         orderId
                 ),node);

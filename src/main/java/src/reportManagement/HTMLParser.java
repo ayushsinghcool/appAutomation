@@ -29,11 +29,9 @@ public class HTMLParser {
         String moduleName;
         String testCaseDescription = null;
         String testCaseTime = null;
-        /*String testCaseType = null;
-        String infos = null;*/
 
 
-        objSize = doc.select("div[class='node']").size();
+        objSize = doc.select("a.node").size();
         reporterData = new Object[objSize][16];
         counter = 0;
         var6 = doc.getElementsByClass("test-item").iterator();
@@ -49,8 +47,8 @@ public class HTMLParser {
                 String testStatus = null;
 
                 try {
-                    Element mainNode = f.children().select("div[class='node']").first();
-                    Element mainNodeForTime = f.children().select("div[class='node-time']").first();
+                    Element mainNode = f.children().select("a.node").first();
+                    Element mainNodeForTime = f.children().select("ul.list-inline li span.badge-default").first();
                     String allDes = mainNode.text();
                     testCaseID = allDes.split(":")[0];
 
@@ -60,16 +58,12 @@ public class HTMLParser {
                     }
 
                     testCaseDescription = allDes.split(":")[1];
+                    testCaseTime = mainNodeForTime.text();
+
+                    Element testStatusPROG = f.children().select("span.badge.log").first();
+                    testStatus = testStatusPROG.text().toUpperCase();
 
 
-                    Element executionTimePROG = mainNodeForTime;
-                       testCaseTime = executionTimePROG.text();
-
-
-                    Element testStatusPROG = mainNode.nextElementSibling();
-                    testStatus = testStatusPROG.text();
-
-                    testStatus = Character.toString(testStatus.charAt(0)).toUpperCase() + testStatus.substring(1);
                 } catch (Exception ex) {
                     logger.info("Error while reading HTML file");
                     ex.printStackTrace();

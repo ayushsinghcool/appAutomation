@@ -169,9 +169,11 @@ public class ServerConnection {
 
     }
 
-    public static String fetchInstaLog(String environmentPod, String environment , String orderId) {
+    public static String fetchInstaLog(String environment , String orderId) {
         String instaproxyPath = "reports/logs/";
         String fileName =  "instaproxy_"+DateUtil.getTimeStamp()+".log";
+        String logsStageResponse = null;
+
         path = Utils.createTxtFile(instaproxyPath,fileName);
 
         ServerConnection sshConnection = new ServerConnection(
@@ -181,9 +183,8 @@ public class ServerConnection {
                 ServerCredentialsProperties.getProperty("stage.password"));
         sshConnection.connect();
 
-        String logsStageResponse = null;
         try {
-            logsStageResponse = sshConnection.executeCommand(environmentPod);
+            logsStageResponse = sshConnection.executeCommand("kubectl get pods -n " + environment + " | grep instaproxy");
             List<String> instaproxyPods = sshConnection.getPodsByPrefix("instaproxy-", logsStageResponse);
 
             String instaproxyPod = instaproxyPods.get(0);
@@ -194,7 +195,6 @@ public class ServerConnection {
 
             List<String> commands = List.of(
                     ServerCredentialsProperties.getProperty("insta.path"),
-                    //ServerCredentialsProperties.getProperty("insta.file.list"),
                     grepCommand + " '" + orderId + "' " +  logFile
                    // zcat + " " + logFile + " | grep -A20 '" + orderId + "'"
 
@@ -207,5 +207,12 @@ public class ServerConnection {
             throw new RuntimeException(e);
         }
         return "../logs/"+fileName;
+    }
+
+    public static void main(String[] args) {
+        ServerConnection.fetchInstaLog(
+                ServerCredentialsProperties.getProperty("environment.insta"),
+                "2024020713000644419614015808"
+        );
     }
 }
