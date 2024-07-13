@@ -1,5 +1,8 @@
 package src.utils;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
@@ -47,7 +50,7 @@ public class ApplicationInteractionActions extends AppPageInit {
         driver.perform(singletonList(sequence));
     }
 
-    public static void tap() {
+    public static void tap(int x, int y) {
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, FINGER);
         Sequence sequence = new Sequence(finger, 1);
         sequence.addAction(finger.createPointerMove(ofMillis(0),
@@ -86,7 +89,13 @@ public class ApplicationInteractionActions extends AppPageInit {
                 PointerInput.Origin.viewport(), x, startY));
         sequence.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         driver.perform(singletonList(sequence));
+
+        AndroidDriver androidDriver = (AndroidDriver) driver;
+        androidDriver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));
+        androidDriver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
+
+
 
 }
 

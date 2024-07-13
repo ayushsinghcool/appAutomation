@@ -39,6 +39,16 @@ public class AppPageInit {
         }
     }
 
+    public boolean waitUntilElementAppear(String locatorId) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60), Duration.ofMillis(500));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id(locatorId)));
+            return false;
+        } catch (java.util.NoSuchElementException e) {
+            return true;
+        }
+    }
+
     public boolean waitUntilElementDisappear(String locatorId) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60), Duration.ofMillis(500));

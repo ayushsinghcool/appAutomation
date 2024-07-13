@@ -33,13 +33,13 @@ public class ExtentManager {
     }
     private static ExtentReports createInstance(){
         ExtentSparkReporter htmlReporter;
-        String fileName = "NCMC App"+ DateUtil.getCurrentDateAndTimeForReport()+".html";
+        String fileName = "Report"+ DateUtil.getCurrentDateAndTimeForReport()+".html";
         extentReportFileName = FilePaths.EXTENT_REPORT_PATH + fileName;
         htmlReporter = new ExtentSparkReporter(extentReportFileName);
         htmlReporter.config().setTheme(Theme.STANDARD);
-        htmlReporter.config().setDocumentTitle("NCMC App Report");
+        htmlReporter.config().setDocumentTitle("Report");
         //htmlReporter.config().setEncoding("utf-8");
-        htmlReporter.config().setReportName("NCMC Automation Report");
+        htmlReporter.config().setReportName("Automation Report");
         
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);

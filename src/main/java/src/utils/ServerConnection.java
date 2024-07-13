@@ -208,11 +208,4 @@ public class ServerConnection {
         }
         return "../logs/"+fileName;
     }
-
-    public static void main(String[] args) {
-        ServerConnection.fetchInstaLog(
-                ServerCredentialsProperties.getProperty("environment.insta"),
-                "2024020713000644419614015808"
-        );
-    }
 }
